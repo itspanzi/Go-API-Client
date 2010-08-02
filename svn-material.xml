@@ -1,0 +1,13 @@
+<material type="SvnMaterial" url="tingtong" username="" checkExternals="false" materialUri="http://go03.thoughtworks.com:8153/go/api/materials/1.xml">
+    <modifications>
+        <changeset changesetUri="http://go03.thoughtworks.com:8153/go/api/materials/1/changeset/48.xml">
+            <user><![CDATA[vgarg]]></user>
+            <checkinTime>2010-06-14T14:07:58+05:30</checkinTime>
+            <revision><![CDATA[48]]></revision>
+            <message><![CDATA[Fixed bug #3478.]]></message>
+            <file name="/Test3.txt" action="deleted"/>
+            <file name="/Test4.txt" action="deleted"/>
+            <file name="/Test2.txt" action="deleted"/>
+        </changeset>
+    </modifications>
+</material>

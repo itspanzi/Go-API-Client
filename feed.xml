@@ -1,0 +1,29 @@
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title><![CDATA[Stages]]></title>
+    <id>http://go03.thoughtworks.com:8153/go/api/feeds/stages.xml</id>
+    <author>
+        <name>Cruise</name>
+    </author>
+    <updated>2010-07-30T22:00:17+05:30</updated>
+    <link rel="self" href="http://go03.thoughtworks.com:8153/go/api/feeds/stages.xml"/>
+
+
+    <link rel="previous" href="http://go03.thoughtworks.com:8153/go/api/feeds/stages.xml?after=412084"/>
+
+
+    <link rel="next" href="http://go03.thoughtworks.com:8153/go/api/feeds/stages.xml?before=410256"/>
+
+    <entry>
+        <title><![CDATA[pipeline/9/stage/1]]></title>
+        <updated>2010-07-22T14:44:56+05:30</updated>
+        <id>410273</id>
+        <link href="http://go03.thoughtworks.com:8153/go/api/stages/9.xml" rel="alternate"/>
+    </entry>
+
+    <entry>
+        <title><![CDATA[pipeline/8/stage/1]]></title>
+        <updated>2010-07-22T14:44:42+05:30</updated>
+        <id>410256</id>
+        <link href="http://go03.thoughtworks.com:8153/go/api/stages/8.xml" rel="alternate"/>
+    </entry>
+</feed>
