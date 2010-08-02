@@ -19,6 +19,7 @@ public class Job {
     private final String agentUUID;
     private final List<Property> properties;
     private final List<Resource> resources;
+    private final List<EnvVariable> envVariables;
 
     private Job(String name, JobPipeline jobPipeline, JobStage jobStage, String state, String result, String agentUUID, List<Property> properties, List<Resource> resources, List<EnvVariable> envVariables) {
         this.name = name;
@@ -29,6 +30,7 @@ public class Job {
         this.agentUUID = agentUUID;
         this.properties = properties;
         this.resources = resources;
+        this.envVariables = envVariables;
     }
 
     public static Job create(String resource) {
@@ -72,6 +74,50 @@ public class Job {
         return properties;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getPipelineName() {
+        return jobPipeline.name;
+    }
+
+    public int getPipelineCounter() {
+        return jobPipeline.counter;
+    }
+
+    public String getPipelineLabel() {
+        return jobPipeline.label;
+    }
+
+    public String getStageName() {
+        return jobStage.name;
+    }
+
+    public int getStageCounter() {
+        return jobStage.counter;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public List<Property> getProperties() {
+        return properties;
+    }
+
+    public List<Resource> getResources() {
+        return resources;
+    }
+
+    public List<EnvVariable> getEnvVariables() {
+        return envVariables;
+    }
+
     private static final class JobStage {
         private final String name;
         private final int counter;
@@ -109,12 +155,12 @@ public class Job {
     private static class JobPipeline {
         private final String name;
         private final int counter;
-        private final String link;
+        private final String label;
 
-        public JobPipeline(String name, int counter, String link) {
+        public JobPipeline(String name, int counter, String label) {
             this.name = name;
             this.counter = counter;
-            this.link = link;
+            this.label = label;
         }
 
         @Override
@@ -125,7 +171,7 @@ public class Job {
             JobPipeline that = (JobPipeline) o;
 
             if (counter != that.counter) return false;
-            if (link != null ? !link.equals(that.link) : that.link != null) return false;
+            if (label != null ? !label.equals(that.label) : that.label != null) return false;
             if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
             return true;
@@ -135,7 +181,7 @@ public class Job {
         public int hashCode() {
             int result = name != null ? name.hashCode() : 0;
             result = 31 * result + counter;
-            result = 31 * result + (link != null ? link.hashCode() : 0);
+            result = 31 * result + (label != null ? label.hashCode() : 0);
             return result;
         }
     }
@@ -188,12 +234,10 @@ public class Job {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
 
-            Property property = (Property) o;
+            EnvVariable that = (EnvVariable) o;
 
-            if (name != null ? !name.equals(property.name) : property.name != null)
-                return false;
-            if (value != null ? !value.equals(property.value) : property.value != null)
-                return false;
+            if (name != null ? !name.equals(that.name) : that.name != null) return false;
+            if (value != null ? !value.equals(that.value) : that.value != null) return false;
 
             return true;
         }
