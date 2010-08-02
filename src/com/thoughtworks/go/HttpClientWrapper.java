@@ -11,4 +11,8 @@ public class HttpClientWrapper {
     public String get(String path) {
         throw new RuntimeException("Not yet implemented");
     }
+
+    static String scrub(String fullLink, String actualBegining) {
+        return fullLink.substring(fullLink.indexOf(actualBegining));
+    }
 }

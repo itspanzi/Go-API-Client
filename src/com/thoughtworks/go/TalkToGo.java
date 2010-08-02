@@ -20,7 +20,7 @@ public class TalkToGo {
         List<Element> entries = stageFeedEntries();
         for (Element entry : entries) {
             if (matchesPipeline(name, entry)) {
-                return Pipeline.create(httpClient.get(scrub(stage(entry).getPipelineUrl(), "/api/pipelines/")));
+                return Pipeline.create(httpClient.get(HttpClientWrapper.scrub(stage(entry).getPipelineUrl(), "/api/pipelines/")));
             }
         }
         throw new RuntimeException("Not yet implemented");
@@ -37,16 +37,12 @@ public class TalkToGo {
     }
 
     private Stage stage(Element entry) {
-        return Stage.create(httpClient.get(scrub(stageResource(entry), "/api/stages/")));
+        return Stage.create(httpClient.get(HttpClientWrapper.scrub(stageResource(entry), "/api/stages/")));
     }
 
     private List<Element> stageFeedEntries() {
         String feed = httpClient.get("/api/feeds/stages.xml");
         return (List<Element>) XmlUtil.parse(feed).selectNodes("//a:entry");
-    }
-
-    private String scrub(String fullLink, String actualBegining) {
-        return fullLink.substring(fullLink.indexOf(actualBegining));
     }
 
     private String stageResource(Element entry) {

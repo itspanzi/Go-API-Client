@@ -1,0 +1,21 @@
+<job name="one">
+    <link rel="self" href="http://go03.thoughtworks.com:8153/go/api/jobs/69257.xml"/>
+    <id><![CDATA[urn:x-go.studios.thoughtworks.com:job-id:natural-ordering-bisect:83:AutoStage:1:hg]]></id>
+    <pipeline name="pipeline" counter="9" label="83"/>
+    <stage name="stage" counter="1" href="http://go03.thoughtworks.com:8153/go/api/stages/14138.xml"/>
+    <state>Completed</state>
+    <result>Failed</result>
+    <properties>
+        <property name="cruise_agent"><![CDATA[blrstdcrspbs01.thoughtworks.com]]></property>
+        <property name="cruise_job_duration"><![CDATA[0]]></property>
+    </properties>
+    <agent uuid="1ce1465d-d8ba-4433-b4fd-ac5426b1ffce"/>
+    <artifacts baseUri="http://go03.thoughtworks.com:8153/go/files/natural-ordering-bisect/83/AutoStage/1/hg" pathFromArtifactRoot="pipelines/natural-ordering-bisect/83/AutoStage/1/hg">
+        <artifact path="cruise-output/log.xml" type="file"/>
+        <artifact path="svn-folder" type="unit"/>
+    </artifacts>
+    <resources>
+    </resources>
+    <environmentvariables>
+    </environmentvariables>
+</job>

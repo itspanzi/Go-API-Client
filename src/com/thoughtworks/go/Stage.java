@@ -2,6 +2,7 @@ package com.thoughtworks.go;
 
 import com.thoughtworks.go.util.XmlUtil;
 import static com.thoughtworks.go.util.XmlUtil.*;
+import static com.thoughtworks.go.HttpClientWrapper.scrub;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.Node;
@@ -21,6 +22,7 @@ public class Stage {
     private final String state;
     private final String approvedBy;
     private final List<StageJob> stageJobs;
+    private HttpClientWrapper httpClientWrapper;
 
     private Stage(String name, int counter, StagePipeline pipeline, String lastUpdated, String result, String state, String approvedBy, List<StageJob> stageJobs) {
         this.name = name;
@@ -60,6 +62,57 @@ public class Stage {
         return pipeline.pipelineLink;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public String getPipelineName() {
+        return pipeline.pipelineName;
+    }
+
+    public int getPipelineCounter() {
+        return pipeline.pipelineCounter;
+    }
+
+    public String getPipelineLabel() {
+        return pipeline.pipelineLabel;
+    }
+
+    public String getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getApprovedBy() {
+        return approvedBy;
+    }
+
+    public Stage using(HttpClientWrapper httpClientWrapper) {
+        this.httpClientWrapper = httpClientWrapper;
+        return this;
+    }
+
+    public List<Job> getJobs() {
+        if (httpClientWrapper == null) {
+            throw new IllegalStateException("You can get jobs only when the http client is set. Try doing a using(HttpClient)");
+        }
+        List<Job> jobs = new ArrayList<Job>();
+        for (StageJob stageJob : this.stageJobs) {
+            jobs.add(Job.create(httpClientWrapper.get(scrub(stageJob.jobLink, "/api/jobs"))));
+        }
+        return jobs;
+    }
 
     private static class StagePipeline {
 
