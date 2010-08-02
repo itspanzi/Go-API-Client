@@ -66,6 +66,14 @@ public class Material {
         return checkExternals;
     }
 
+    public String getPipelineName() {
+        return pipelineName;
+    }
+
+    public String getStageName() {
+        return stageName;
+    }
+
     public static class Change {
 
         String user;

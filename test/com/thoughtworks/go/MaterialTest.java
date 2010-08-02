@@ -34,6 +34,18 @@ public class MaterialTest {
         assertThat(changes.get(0), is(new Material.Change("vgarg", "2010-06-14T14:07:58+05:30", "48", "Fixed bug #3478.")));
     }
 
+    @Test
+    public void shouldCreateMaterialForDependencyMaterial() throws Exception {
+        Material material = Material.create(file("pipeline-material.xml"));
+        assertThat(material.getType(), is("DependencyMaterial"));
+        assertThat(material.getPipelineName(), is("application"));
+        assertThat(material.getStageName(), is("dev"));
+
+        List<Material.Change> changes = material.getChanges();
+        assertThat(changes.size(), is(1));
+        assertThat(changes.get(0), is(new Material.Change(null, "2010-07-07T16:21:41+05:30", "application/54/dev/1", null)));
+    }
+
     private String file(String name) throws IOException {
         return FileUtils.readFileToString(new File(name));
     }

@@ -1,0 +1,8 @@
+<material type="DependencyMaterial" pipelineName="application" stageName="dev" materialUri="http://go03.thoughtworks.com:8153/go/api/materials/114.xml">
+    <modifications>
+        <changeset changesetUri="http://go03.thoughtworks.com:8153/go/api/stages/2750.xml">
+            <checkinTime>2010-07-07T16:21:41+05:30</checkinTime>
+            <revision>application/54/dev/1</revision>
+        </changeset>
+    </modifications>
+</material>
