@@ -21,14 +21,16 @@ public class Pipeline {
     private final String scheduleTime;
     private final List<Material> materials;
     private final List<PipelineStage> pipelineStages;
+    private final String approvedBy;
 
-    private Pipeline(String name, int counter, String label, String scheduleTime, List<Material> materials, List<PipelineStage> pipelineStages) {
+    private Pipeline(String name, int counter, String label, String scheduleTime, List<Material> materials, List<PipelineStage> pipelineStages, String approvedBy) {
         this.name = name;
         this.counter = counter;
         this.label = label;
         this.scheduleTime = scheduleTime;
         this.materials = materials;
         this.pipelineStages = pipelineStages;
+        this.approvedBy = approvedBy;
     }
 
     public static Pipeline create(String pipelineResource) {
@@ -37,7 +39,8 @@ public class Pipeline {
         String counter = attrVal(singleNode(doc, "/pipeline"), "counter");
         String label = attrVal(singleNode(doc, "/pipeline"), "label");
         String scheduleTime = nodeText(doc, "//scheduleTime");
-        return new Pipeline(name, Integer.parseInt(counter), label, scheduleTime, materials(doc), stages(doc));
+        String approvedBy = nodeText(doc, "//approvedBy");
+        return new Pipeline(name, Integer.parseInt(counter), label, scheduleTime, materials(doc), stages(doc), approvedBy);
     }
 
     private static List<Material> materials(Document doc) {
@@ -54,6 +57,10 @@ public class Pipeline {
             pipelineStages.add(new PipelineStage(attrVal(stageElement, "href")));
         }
         return pipelineStages;
+    }
+
+    public String getApprovedBy() {
+        return approvedBy;
     }
 
     private static class PipelineStage {
@@ -90,6 +97,7 @@ public class Pipeline {
         Pipeline pipeline = (Pipeline) o;
 
         if (counter != pipeline.counter) return false;
+        if (approvedBy != null ? !approvedBy.equals(pipeline.approvedBy) : pipeline.approvedBy != null) return false;
         if (label != null ? !label.equals(pipeline.label) : pipeline.label != null) return false;
         if (materials != null ? !materials.equals(pipeline.materials) : pipeline.materials != null) return false;
         if (name != null ? !name.equals(pipeline.name) : pipeline.name != null) return false;
@@ -109,6 +117,7 @@ public class Pipeline {
         result = 31 * result + (scheduleTime != null ? scheduleTime.hashCode() : 0);
         result = 31 * result + (materials != null ? materials.hashCode() : 0);
         result = 31 * result + (pipelineStages != null ? pipelineStages.hashCode() : 0);
+        result = 31 * result + (approvedBy != null ? approvedBy.hashCode() : 0);
         return result;
     }
 }

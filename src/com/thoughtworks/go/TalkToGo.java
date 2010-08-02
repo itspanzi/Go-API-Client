@@ -20,7 +20,8 @@ public class TalkToGo {
         List<Element> entries = stageFeedEntries();
         for (Element entry : entries) {
             if (matchesPipeline(name, entry)) {
-                return Pipeline.create(httpClient.get(HttpClientWrapper.scrub(stage(entry).getPipelineUrl(), "/api/pipelines/")));
+                Stage stage = stage(entry);
+                return stage.using(httpClient).getPipeline();
             }
         }
         throw new RuntimeException("Not yet implemented");

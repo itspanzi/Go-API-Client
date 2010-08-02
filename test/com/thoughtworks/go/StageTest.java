@@ -52,6 +52,15 @@ public class StageTest {
         assertThat(jobs.get(1), is(Job.create(file("job-2.xml"))));
     }
 
+    @Test
+    public void shouldLazilyLoadPipeline() throws Exception {
+        Stage stage = Stage.create(file("stage-9.xml"));
+        HttpClientWrapper wrapper = mock(HttpClientWrapper.class);
+        when(wrapper.get("/api/pipelines/pipeline/9.xml")).thenReturn(file("pipeline-9.xml"));
+        Pipeline pipeline = stage.using(wrapper).getPipeline();
+        assertThat(pipeline.getApprovedBy(), is("CruiseTimer"));
+    }
+
     private String file(String name) throws IOException {
         return FileUtils.readFileToString(new File(name));
     }

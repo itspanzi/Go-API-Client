@@ -104,14 +104,23 @@ public class Stage {
     }
 
     public List<Job> getJobs() {
-        if (httpClientWrapper == null) {
-            throw new IllegalStateException("You can get jobs only when the http client is set. Try doing a using(HttpClient)");
-        }
+        ensureClientIsSet();
         List<Job> jobs = new ArrayList<Job>();
         for (StageJob stageJob : this.stageJobs) {
             jobs.add(Job.create(httpClientWrapper.get(scrub(stageJob.jobLink, "/api/jobs"))));
         }
         return jobs;
+    }
+
+    private void ensureClientIsSet() {
+        if (httpClientWrapper == null) {
+            throw new IllegalStateException("You can get jobs only when the http client is set. Try doing a using(HttpClient)");
+        }
+    }
+
+    public Pipeline getPipeline() {
+        ensureClientIsSet();
+        return Pipeline.create(httpClientWrapper.get(scrub(pipeline.pipelineLink, "/api/pipelines")));
     }
 
     private static class StagePipeline {
