@@ -1,15 +1,12 @@
 package com.thoughtworks.go;
 
-import org.hamcrest.Matcher;
 import org.dom4j.Document;
 import org.dom4j.Element;
-import com.thoughtworks.go.util.XmlUtil;
 import static com.thoughtworks.go.util.XmlUtil.*;
 import static com.thoughtworks.go.util.XmlUtil.nodes;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.text.SimpleDateFormat;
 
 /**
  * @understands an instance of a Go Pipeline
