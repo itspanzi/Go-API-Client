@@ -61,4 +61,13 @@ public class TalkToGo {
     private boolean match(Element entry, String regex) {
         return entry.selectSingleNode(".//a:title").getText().matches(regex);
     }
+
+    public void visitAllStages(StageVisitor visitor) {
+        List<Element> entries = stageFeedEntries();
+        for (Element entry : entries) {
+            Stage stage = stage(entry);
+            visitor.visitStage(stage);
+            visitor.visitPipeline(stage.using(httpClient).getPipeline());
+        }
+    }
 }

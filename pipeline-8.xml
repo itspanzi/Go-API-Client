@@ -1,0 +1,34 @@
+<pipeline name="pipeline" counter="8" label="83">
+    <link rel="self" href="http://go03.thoughtworks.com:8153/go/api/pipelines/pipeline/9.xml"/>
+    <id><![CDATA[urn:x-go.studios.thoughtworks.com:job-id:natural-ordering-bisect:83]]></id>
+    <link rel="insertedAfter" href="http://go03.thoughtworks.com:8153/go/api/pipelines/natural-ordering-bisect/5771.xml"/>
+    <scheduleTime>2010-07-30T22:00:00+05:30</scheduleTime>
+    <materials>
+        <material type="HgMaterial" url="ssh://cruise@10.4.3.137//repo/temp_hg" materialUri="http://go03.thoughtworks.com:8153/go/api/materials/8970.xml">
+            <modifications>
+                <changeset changesetUri="http://go03.thoughtworks.com:8153/go/api/materials/8970/changeset/8d17cce203439ef92f19c5fe035da1a6582454e2.xml">
+                    <user><![CDATA[VGarg]]></user>
+                    <checkinTime>2010-07-07T13:43:01+05:30</checkinTime>
+                    <revision><![CDATA[8d17cce203439ef92f19c5fe035da1a6582454e2]]></revision>
+                    <message><![CDATA[First File]]></message>
+                    <file name="foo" action="added"/>
+                </changeset>
+            </modifications>
+        </material>
+        <material type="HgMaterial" url="ssh://cruise@10.4.3.137//repo/temp_hg" materialUri="http://go03.thoughtworks.com:8153/go/api/materials/8970.xml">
+            <modifications>
+                <changeset changesetUri="http://go03.thoughtworks.com:8153/go/api/materials/8970/changeset/8d17cce203439ef92f19c5fe035da1a6582454e2.xml">
+                    <user><![CDATA[VGarg]]></user>
+                    <checkinTime>2010-07-07T13:43:01+05:30</checkinTime>
+                    <revision><![CDATA[8d17cce203439ef92f19c5fe035da1a6582454e2]]></revision>
+                    <message><![CDATA[First File]]></message>
+                    <file name="foo" action="added"/>
+                </changeset>
+            </modifications>
+        </material>
+    </materials>
+    <stages>
+        <stage href="http://go03.thoughtworks.com:8153/go/api/stages/14138.xml"/>
+    </stages>
+    <approvedBy><![CDATA[CruiseTimer]]></approvedBy>
+</pipeline>
