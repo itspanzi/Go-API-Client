@@ -4,6 +4,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertThat;
 import org.apache.commons.io.FileUtils;
 import static org.hamcrest.core.Is.is;
+import org.joda.time.format.ISODateTimeFormat;
+import org.joda.time.DateTime;
 
 import java.io.IOException;
 import java.io.File;
@@ -26,6 +28,16 @@ public class JobTest {
         assertProperties(job);
         assertResources(job);
         assertVariables(job);
+    }
+
+    @Test
+    public void shouldHaveTheTimeTheJobSpentOnAnAgent() throws Exception {
+        Job job = Job.create(file("job-2.xml"));
+
+        DateTime started = ISODateTimeFormat.dateTimeNoMillis().parseDateTime("2010-07-08T11:56:49+05:30");
+        DateTime finished = ISODateTimeFormat.dateTimeNoMillis().parseDateTime("2010-07-08T11:57:03+05:30");
+//        finished.minus(started.toDate().)
+//        assertThat(job.timeSpentOnAgent(), is())
     }
 
     private void assertProperties(Job job) {

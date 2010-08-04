@@ -1,0 +1,30 @@
+<job name="two">
+    <link rel="self" href="http://go03.thoughtworks.com:8153/go/api/jobs/69257.xml"/>
+    <id><![CDATA[urn:x-go.studios.thoughtworks.com:job-id:natural-ordering-bisect:83:AutoStage:1:hg]]></id>
+    <pipeline name="pipeline" counter="9" label="83"/>
+    <stage name="stage" counter="1" href="http://go03.thoughtworks.com:8153/go/api/stages/14138.xml"/>
+    <state>Completed</state>
+    <result>Failed</result>
+    <properties>
+        <property name="cruise_agent"><![CDATA[blrstdcrspbs01.thoughtworks.com]]></property>
+        <property name="cruise_job_duration"><![CDATA[0]]></property>
+        <property name="cruise_timestamp_01_scheduled"><![CDATA[2010-07-08T11:56:35+05:30]]></property>
+        <property name="cruise_timestamp_02_assigned"><![CDATA[2010-07-08T11:56:49+05:30]]></property>
+        <property name="cruise_timestamp_03_preparing"><![CDATA[2010-07-08T11:56:59+05:30]]></property>
+        <property name="cruise_timestamp_04_building"><![CDATA[2010-07-08T11:57:03+05:30]]></property>
+        <property name="cruise_timestamp_05_completing"><![CDATA[2010-07-08T11:57:03+05:30]]></property>
+        <property name="cruise_timestamp_06_completed"><![CDATA[2010-07-08T11:57:03+05:30]]></property>
+    </properties>
+    <agent uuid="1ce1465d-d8ba-4433-b4fd-ac5426b1ffce"/>
+    <artifacts baseUri="http://go03.thoughtworks.com:8153/go/files/natural-ordering-bisect/83/AutoStage/1/hg"
+               pathFromArtifactRoot="pipelines/natural-ordering-bisect/83/AutoStage/1/hg">
+        <artifact path="cruise-output/log.xml" type="file"/>
+        <artifact path="svn-folder" type="unit"/>
+    </artifacts>
+    <resources>
+        <resource>foo</resource>
+    </resources>
+    <environmentvariables>
+        <variable name="command"><![CDATA[ls -la]]></variable>
+    </environmentvariables>
+</job>
