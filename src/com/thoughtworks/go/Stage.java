@@ -123,6 +123,10 @@ public class Stage {
         return Pipeline.create(httpClientWrapper.get(scrub(pipeline.pipelineLink, "/api/pipelines")));
     }
 
+    public boolean hasFailed() {
+        return state.equals("Completed") && result.equalsIgnoreCase("Failed");
+    }
+
     private static class StagePipeline {
 
         String pipelineName;

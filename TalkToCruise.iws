@@ -71,7 +71,7 @@
       <file leaf-file-name="TalkToGo.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/TalkToGo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="43" column="5" selection-start="1380" selection-end="1380" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -80,16 +80,7 @@
       <file leaf-file-name="Stage.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/Stage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="0" selection-start="3219" selection-end="3219" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="job-1.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/job-1.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="6" selection-start="1089" selection-end="1089" vertical-scroll-proportion="0.0">
+            <state line="126" column="50" selection-start="3963" selection-end="3963" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -104,10 +95,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JobTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="JobTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/com/thoughtworks/go/JobTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="0" selection-start="1377" selection-end="1377" vertical-scroll-proportion="0.59536934">
+            <state line="29" column="29" selection-start="973" selection-end="973" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -142,10 +133,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExampleSpike.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/ExampleSpike.java">
+      <file leaf-file-name="ExampleUsage.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/reports/ExampleUsage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="128" selection-end="269" vertical-scroll-proportion="0.0">
+            <state line="14" column="0" selection-start="286" selection-end="427" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BuildBreaker.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/reports/BuildBreaker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="25" selection-start="94" selection-end="94" vertical-scroll-proportion="0.06615215">
               <folding />
             </state>
           </provider>
@@ -572,15 +574,6 @@
     <find-history />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/com/thoughtworks/go/PipelineTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="602" selection-end="602" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/StageVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="42" selection-start="197" selection-end="197" vertical-scroll-proportion="0.0">
@@ -618,30 +611,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/Stage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="0" selection-start="3219" selection-end="3219" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/job-1.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="6" selection-start="1089" selection-end="1089" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/ExampleSpike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="128" selection-end="269" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/TalkToGo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -683,10 +655,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/com/thoughtworks/go/JobTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="0" selection-start="1377" selection-end="1377" vertical-scroll-proportion="0.59536934">
+        <state line="29" column="29" selection-start="973" selection-end="973" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/reports/ExampleUsage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="286" selection-end="427" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/TalkToGo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="5" selection-start="1380" selection-end="1380" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/Stage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="126" column="50" selection-start="3963" selection-end="3963" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/reports/BuildBreaker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="25" selection-start="94" selection-end="94" vertical-scroll-proportion="0.06615215">
+          <folding />
         </state>
       </provider>
     </entry>
