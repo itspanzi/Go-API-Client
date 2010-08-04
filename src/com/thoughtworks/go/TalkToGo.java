@@ -38,7 +38,9 @@ public class TalkToGo {
     }
 
     private Stage stage(Element entry) {
-        return Stage.create(httpClient.get(HttpClientWrapper.scrub(stageResource(entry), "/api/stages/")));
+        Stage stage = Stage.create(httpClient.get(HttpClientWrapper.scrub(stageResource(entry), "/api/stages/")));
+        stage.using(httpClient);
+        return stage;
     }
 
     private List<Element> stageFeedEntries() {
@@ -67,7 +69,7 @@ public class TalkToGo {
         for (Element entry : entries) {
             Stage stage = stage(entry);
             visitor.visitStage(stage);
-            visitor.visitPipeline(stage.using(httpClient).getPipeline());
+            visitor.visitPipeline(stage.getPipeline());
         }
     }
 }

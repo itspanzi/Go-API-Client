@@ -118,6 +118,14 @@ public class Job {
         return envVariables;
     }
 
+    public String getUUID() {
+        return agentUUID;
+    }
+
+    public double timeSpentOnAgent() {
+        throw new RuntimeException("Not yet implemented");
+    }
+
     private static final class JobStage {
         private final String name;
         private final int counter;
