@@ -67,9 +67,15 @@ public class TalkToGo {
     public void visitAllStages(StageVisitor visitor) {
         List<Element> entries = stageFeedEntries();
         for (Element entry : entries) {
-            Stage stage = stage(entry);
-            visitor.visitStage(stage);
-            visitor.visitPipeline(stage.getPipeline());
+            try {
+                Stage stage = stage(entry);
+                visitor.visitStage(stage);
+                visitor.visitPipeline(stage.getPipeline());
+            } catch (Exception e) {
+                //TODO: replace with logging
+                System.out.println("Skipping entry because of an exception.\n" + entry.asXML() + "\n");
+                e.printStackTrace();
+            }
         }
     }
 }
