@@ -10,6 +10,7 @@ import org.joda.time.DateTime;
 import java.io.IOException;
 import java.io.File;
 import java.util.List;
+import java.util.Date;
 
 public class JobTest {
 
@@ -32,12 +33,11 @@ public class JobTest {
 
     @Test
     public void shouldHaveTheTimeTheJobSpentOnAnAgent() throws Exception {
-        Job job = Job.create(file("job-2.xml"));
+        Job job = Job.create(file("job-with-properties.xml"));
 
-        DateTime started = ISODateTimeFormat.dateTimeNoMillis().parseDateTime("2010-07-08T11:56:49+05:30");
-        DateTime finished = ISODateTimeFormat.dateTimeNoMillis().parseDateTime("2010-07-08T11:57:03+05:30");
-//        finished.minus(started.toDate().)
-//        assertThat(job.timeSpentOnAgent(), is())
+        Date started = ISODateTimeFormat.dateTimeNoMillis().parseDateTime("2010-07-08T11:56:49+05:30").toDate();
+        Date finished = ISODateTimeFormat.dateTimeNoMillis().parseDateTime("2010-07-08T11:57:03+05:30").toDate();
+        assertThat((finished.getTime() - started.getTime()) / 1000, is(job.timeSpentOnAgent()));
     }
 
     private void assertProperties(Job job) {

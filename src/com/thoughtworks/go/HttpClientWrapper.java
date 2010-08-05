@@ -34,7 +34,7 @@ public class HttpClientWrapper {
             if (returnCode >= 200 && returnCode <= 200) {
                 return getMethod.getResponseBodyAsString();
             }
-            throw new RuntimeException("The request could not be completed. The response was: " + returnCode);
+            throw new RuntimeException(String.format("The request to [%s] could not be completed. Response [%s] was returned with code [%s]", path, getMethod.getResponseBodyAsString(), returnCode));
         } catch (IOException e) {
             throw new RuntimeException("Connection pooped", e);
         }

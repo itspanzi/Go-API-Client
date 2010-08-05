@@ -2,8 +2,8 @@
 <project relativePaths="false" version="4">
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="" />
-    <ignored path=".idea/workspace.xml" />
     <ignored path="TalkToCruise.iws" />
+    <ignored path=".idea/workspace.xml" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="Commander">
@@ -59,10 +59,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AgentUtilization.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="AgentUtilization.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/reports/AgentUtilization.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="13" selection-start="1013" selection-end="1013" vertical-scroll-proportion="0.0">
+            <state line="33" column="10" selection-start="1147" selection-end="1147" vertical-scroll-proportion="0.58949095">
               <folding />
             </state>
           </provider>
@@ -71,7 +71,43 @@
       <file leaf-file-name="TalkToGo.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/TalkToGo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="5" selection-start="1380" selection-end="1380" vertical-scroll-proportion="0.0">
+            <state line="75" column="96" selection-start="2685" selection-end="2685" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StageVisitor.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/StageVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="9" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Duration.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar:///usr/lib/jvm/java-6-sun-1.6.0.15/src.zip!/javax/xml/datatype/Duration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="101" column="22" selection-start="3958" selection-end="3958" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DurationImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar:///usr/lib/jvm/java-6-sun-1.6.0.15/src.zip!/com/sun/org/apache/xerces/internal/jaxp/datatype/DurationImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="100" column="6" selection-start="3812" selection-end="3812" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stage-8.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stage-8.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="120" selection-start="348" selection-end="348" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -80,7 +116,16 @@
       <file leaf-file-name="Stage.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/Stage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="126" column="50" selection-start="3963" selection-end="3963" vertical-scroll-proportion="0.0">
+            <state line="122" column="0" selection-start="3770" selection-end="3770" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HttpClientWrapper.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/HttpClientWrapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="0" selection-start="852" selection-end="852" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -89,27 +134,7 @@
       <file leaf-file-name="Job.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/Job.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="124" column="38" selection-start="3798" selection-end="3798" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JobTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/com/thoughtworks/go/JobTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="29" selection-start="973" selection-end="973" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="job-2.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/job-2.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="133" column="0" selection-start="4138" selection-end="4260" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -118,36 +143,7 @@
       <file leaf-file-name="job-with-properties.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/job-with-properties.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="89" selection-start="1189" selection-end="1214" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Integer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar:///usr/lib/jvm/java-6-sun-1.6.0.15/src.zip!/java/lang/Integer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="497" column="22" selection-start="17896" selection-end="17896" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExampleUsage.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/reports/ExampleUsage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="286" selection-end="427" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BuildBreaker.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/reports/BuildBreaker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="25" selection-start="94" selection-end="94" vertical-scroll-proportion="0.06615215">
+            <state line="8" column="47" selection-start="490" selection-end="521" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -304,13 +300,16 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.thoughtworks.go" />
+    </key>
+    <key name="IntroduceConstantDialog.RECENTS_KEY">
+      <recent name="com.thoughtworks.go.Job" />
     </key>
     <key name="MoveMembersDialog.RECENTS_KEY">
       <recent name="com.thoughtworks.go.HttpClientWrapper" />
@@ -332,7 +331,13 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="TalkToGo" />
       <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="43682" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method>
         <option name="Make" value="true" />
@@ -524,7 +529,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32976446" sideWeight="0.5" order="1" side_tool="false" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993576" sideWeight="0.5" order="3" side_tool="false" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39833158" sideWeight="0.5" order="3" side_tool="false" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
@@ -534,11 +539,11 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973205" sideWeight="0.6627409" order="0" side_tool="false" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973205" sideWeight="0.66319084" order="0" side_tool="false" />
       <window_info id="DatabaseBrowser" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32976446" sideWeight="0.5" order="2" side_tool="false" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295099" sideWeight="0.5" order="2" side_tool="false" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" />
@@ -574,19 +579,54 @@
     <find-history />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/StageVisitor.java">
+    <entry file="jar:///usr/lib/jvm/java-6-sun-1.6.0.15/src.zip!/java/lang/Integer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="42" selection-start="197" selection-end="197" vertical-scroll-proportion="0.0">
+        <state line="497" column="22" selection-start="17896" selection-end="17896" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/thoughtworks/go/StageTest.java">
+    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/reports/ExampleUsage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="64" selection-start="2470" selection-end="2470" vertical-scroll-proportion="0.0">
+        <state line="14" column="0" selection-start="286" selection-end="427" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/reports/BuildBreaker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="141" selection-start="1002" selection-end="1002" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/joda-time-1.4.jar!/org/joda/time/format/DateTimeFormatter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="0" selection-start="4389" selection-end="4389" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/thoughtworks/go/JobTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="0" selection-start="905" selection-end="905" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/job-2.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="74" selection-start="490" selection-end="521" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/job-with-properties.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="47" selection-start="490" selection-end="521" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -597,97 +637,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pipeline-8.xml">
+    <entry file="jar:///usr/lib/jvm/java-6-sun-1.6.0.15/src.zip!/com/sun/org/apache/xerces/internal/jaxp/datatype/DurationImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="36" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0">
+        <state line="100" column="6" selection-start="3812" selection-end="3812" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/thoughtworks/go/TalkToGoTest.java">
+    <entry file="jar:///usr/lib/jvm/java-6-sun-1.6.0.15/src.zip!/javax/xml/datatype/Duration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="23" selection-start="2222" selection-end="2222" vertical-scroll-proportion="0.0">
+        <state line="101" column="22" selection-start="3958" selection-end="3958" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/job-1.xml">
+    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/StageVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="6" selection-start="1089" selection-end="1089" vertical-scroll-proportion="0.0">
+        <state line="6" column="9" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar:///usr/lib/jvm/java-6-sun-1.6.0.15/src.zip!/java/lang/Integer.java">
+    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/HttpClientWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="497" column="22" selection-start="17896" selection-end="17896" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/Job.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="38" selection-start="3798" selection-end="3798" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/job-2.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/reports/AgentUtilization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="13" selection-start="1013" selection-end="1013" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/job-with-properties.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="89" selection-start="1189" selection-end="1214" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/thoughtworks/go/JobTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="29" selection-start="973" selection-end="973" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/reports/ExampleUsage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="286" selection-end="427" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/TalkToGo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="5" selection-start="1380" selection-end="1380" vertical-scroll-proportion="0.0">
+        <state line="28" column="0" selection-start="852" selection-end="852" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/Stage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="50" selection-start="3963" selection-end="3963" vertical-scroll-proportion="0.0">
+        <state line="122" column="0" selection-start="3770" selection-end="3770" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/reports/BuildBreaker.java">
+    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/TalkToGo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="25" selection-start="94" selection-end="94" vertical-scroll-proportion="0.06615215">
+        <state line="75" column="96" selection-start="2685" selection-end="2685" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/Job.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="133" column="0" selection-start="4138" selection-end="4260" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/go/reports/AgentUtilization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="10" selection-start="1147" selection-end="1147" vertical-scroll-proportion="0.58949095">
           <folding />
         </state>
       </provider>

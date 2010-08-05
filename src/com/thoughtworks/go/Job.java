@@ -3,6 +3,7 @@ package com.thoughtworks.go;
 import static com.thoughtworks.go.util.XmlUtil.*;
 import org.dom4j.Document;
 import org.dom4j.Element;
+import org.joda.time.format.ISODateTimeFormat;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ public class Job {
     private final List<Property> properties;
     private final List<Resource> resources;
     private final List<EnvVariable> envVariables;
+    private static final String ASSIGNED_TIMESTAMP = "cruise_timestamp_02_assigned";
+    private static final String COMPLETED_TIMESTAMP = "cruise_timestamp_06_completed";
 
     private Job(String name, JobPipeline jobPipeline, JobStage jobStage, String state, String result, String agentUUID, List<Property> properties, List<Resource> resources, List<EnvVariable> envVariables) {
         this.name = name;
@@ -46,7 +49,7 @@ public class Job {
         String state = nodeText(doc, "//state");
         String result = nodeText(doc, "//result");
 
-        String agentUUID = nodeText(doc, "//agent");
+        String agentUUID = attrVal(singleNode(doc, "//agent"), "uuid");
         return new Job(name, jobPipeline, jobStage, state, result, agentUUID, properties(doc), resources(doc), envVars(doc));
     }
 
@@ -122,8 +125,34 @@ public class Job {
         return agentUUID;
     }
 
-    public double timeSpentOnAgent() {
-        throw new RuntimeException("Not yet implemented");
+    public long timeSpentOnAgent() {
+        if (result.equals("Cancelled") || state.equals("Cancelled")) {
+            return 0;
+        }
+        long assigned = time(property(ASSIGNED_TIMESTAMP));
+        long completed = time(property(COMPLETED_TIMESTAMP));
+        return inSeconds(assigned, completed);
+    }
+
+    private long inSeconds(long assigned, long completed) {
+        return (completed - assigned) / 1000;
+    }
+
+    private long time(Property property) {
+        return ISODateTimeFormat.dateTimeNoMillis().parseDateTime(property.value).toDate().getTime();
+    }
+
+    private Property property(String propertyName) {
+        for (Property property : properties) {
+            if (property.name.equals(propertyName)) {
+                return property;
+            }
+        }
+        throw new RuntimeException(String.format("Property '%s' not found", propertyName));
+    }
+
+    public String getProperty(String propertyName) {
+        return property(propertyName).value;
     }
 
     private static final class JobStage {

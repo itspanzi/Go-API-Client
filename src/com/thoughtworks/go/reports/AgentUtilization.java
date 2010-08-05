@@ -7,12 +7,15 @@ import java.util.*;
 import org.joda.time.DateTime;
 import org.joda.time.format.ISODateTimeFormat;
 
+import javax.xml.datatype.Duration;
+
 public class AgentUtilization {
 
     public static void main(String[] args) {
         HttpClientWrapper wrapper = new HttpClientWrapper("go03.thoughtworks.com", 8153);
         TalkToGo talkToGo = new TalkToGo(wrapper);
         final Map<String, List<Job>> agentToJobs = new HashMap<String, List<Job>>();
+        final Stage[] lastStage = new Stage[1];
         talkToGo.visitAllStages(new StageVisitor() {
             public void visitStage(Stage stage) {
                 for (Job job : stage.getJobs()) {
@@ -23,15 +26,21 @@ public class AgentUtilization {
                     }
                     jobs.add(job);
                 }
+                lastStage[0] = stage;
             }
 
             public void visitPipeline(Pipeline pipeline) {
             }
         });
+        System.out.println("***********************\n\n\n");
         for (String uuid : agentToJobs.keySet()) {
+            long totalTime = 0;
+            String hostname = "<unknown>";
             for (Job job : agentToJobs.get(uuid)) {
-                double time = job.timeSpentOnAgent();
+                totalTime += job.timeSpentOnAgent();
+                hostname = job.getProperty("cruise_agent");
             }
+            System.out.println(String.format("Agent with UUID '%s' at hostname '%s' spent a total of '%s' seconds since %s", uuid, hostname, totalTime, lastStage[0].getLastUpdated()));
         }
     }
 }
