@@ -1,16 +1,14 @@
 package com.thoughtworks.go.domain;
 
+import com.thoughtworks.go.http.HttpClientWrapper;
+import static com.thoughtworks.go.http.HttpClientWrapper.scrub;
 import com.thoughtworks.go.util.XmlUtil;
 import static com.thoughtworks.go.util.XmlUtil.*;
-import static com.thoughtworks.go.http.HttpClientWrapper.scrub;
-import com.thoughtworks.go.http.HttpClientWrapper;
-import com.thoughtworks.go.domain.Pipeline;
-import com.thoughtworks.go.domain.Job;
 import org.dom4j.Document;
 import org.dom4j.Element;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @understands an instace of a Go stage

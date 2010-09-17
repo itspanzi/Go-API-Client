@@ -1,9 +1,9 @@
 package com.thoughtworks.go.reports;
 
+import com.thoughtworks.go.domain.Job;
+import com.thoughtworks.go.domain.Stage;
 import com.thoughtworks.go.http.HttpClientWrapper;
 import com.thoughtworks.go.legacy.TalkToGo2DotOh;
-import com.thoughtworks.go.domain.Stage;
-import com.thoughtworks.go.domain.Job;
 
 import java.util.List;
 

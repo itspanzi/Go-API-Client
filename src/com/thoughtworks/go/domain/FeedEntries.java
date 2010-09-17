@@ -1,15 +1,12 @@
 package com.thoughtworks.go.domain;
 
-import com.thoughtworks.go.util.XmlUtil;
 import static com.thoughtworks.go.util.XmlUtil.attrVal;
 import static com.thoughtworks.go.util.XmlUtil.parse;
-
-import java.util.List;
-import java.util.ArrayList;
-
 import org.dom4j.Document;
 import org.dom4j.Element;
-import org.dom4j.Node;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @understands a collection of a FeedEntry

@@ -1,13 +1,16 @@
 package com.thoughtworks.go.reports;
 
+import com.thoughtworks.go.domain.Job;
+import com.thoughtworks.go.domain.Pipeline;
+import com.thoughtworks.go.domain.Stage;
+import com.thoughtworks.go.http.HttpClientWrapper;
 import com.thoughtworks.go.legacy.TalkToGo2DotOh;
 import com.thoughtworks.go.visitor.StageVisitor;
-import com.thoughtworks.go.http.HttpClientWrapper;
-import com.thoughtworks.go.domain.Pipeline;
-import com.thoughtworks.go.domain.Job;
-import com.thoughtworks.go.domain.Stage;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AgentUtilization {
 

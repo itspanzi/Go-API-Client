@@ -1,8 +1,7 @@
 package com.thoughtworks.go.domain;
 
-import org.dom4j.Element;
-import org.dom4j.Node;
 import com.thoughtworks.go.util.XmlUtil;
+import org.dom4j.Element;
 
 /**
  * @understands a feed entry
@@ -90,5 +89,9 @@ public class FeedEntry {
 
     private String stageNameRegex(String stageName) {
         return String.format("^.*?/\\d+/%s/\\d+", stageName);
+    }
+
+    public boolean matchesStage(String pipeline, String stage) {
+        return getTitle().matches(String.format("^%s/\\d+/%s/\\d+", pipeline, stage));
     }
 }

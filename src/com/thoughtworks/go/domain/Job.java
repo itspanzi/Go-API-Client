@@ -5,8 +5,8 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.joda.time.format.ISODateTimeFormat;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @understands a Go job instance.

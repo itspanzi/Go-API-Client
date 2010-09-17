@@ -1,13 +1,11 @@
 package com.thoughtworks.go.domain;
 
+import static com.thoughtworks.go.util.XmlUtil.*;
 import org.dom4j.Document;
 import org.dom4j.Element;
-import static com.thoughtworks.go.util.XmlUtil.*;
-import static com.thoughtworks.go.util.XmlUtil.nodes;
-import com.thoughtworks.go.domain.Material;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @understands an instance of a Go Pipeline
