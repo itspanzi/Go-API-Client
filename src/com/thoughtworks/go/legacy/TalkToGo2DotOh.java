@@ -1,4 +1,4 @@
-package com.thoughtworks.go;
+package com.thoughtworks.go.legacy;
 
 import com.thoughtworks.go.domain.FeedEntries;
 import com.thoughtworks.go.domain.FeedEntry;
@@ -13,14 +13,14 @@ import com.thoughtworks.go.visitor.criteria.VisitingCriteria;
 import java.util.List;
 
 /**
- * @understands Talking to a Go server using its APIs
+ * @understands Talking to a Go 2.0 server using its APIs
  */
 @SuppressWarnings({"unchecked"})
-public class TalkToGo {
+public class TalkToGo2DotOh {
     private final HttpClientWrapper httpClient;
     private final boolean infiniteCrawler;
 
-    public TalkToGo(HttpClientWrapper httpClient, boolean infiniteCrawler) {
+    public TalkToGo2DotOh(HttpClientWrapper httpClient, boolean infiniteCrawler) {
         this.httpClient = httpClient;
         this.infiniteCrawler = infiniteCrawler;
     }

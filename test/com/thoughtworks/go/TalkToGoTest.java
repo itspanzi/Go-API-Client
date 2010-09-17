@@ -6,6 +6,7 @@ import com.thoughtworks.go.domain.FeedEntries;
 import com.thoughtworks.go.http.HttpClientWrapper;
 import com.thoughtworks.go.visitor.StageVisitor;
 import com.thoughtworks.go.visitor.criteria.VisitingCriteria;
+import com.thoughtworks.go.legacy.TalkToGo2DotOh;
 import org.apache.commons.io.FileUtils;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -20,12 +21,12 @@ import java.util.Map;
 
 public class TalkToGoTest {
     private HttpClientWrapper httpClientWrapper;
-    private TalkToGo talkToGo;
+    private TalkToGo2DotOh talkToGo;
 
     @Before
     public void setup() throws IOException {
         httpClientWrapper = mock(HttpClientWrapper.class);
-        talkToGo = new TalkToGo(httpClientWrapper, false);
+        talkToGo = new TalkToGo2DotOh(httpClientWrapper, false);
         when(httpClientWrapper.get("/api/feeds/stages.xml")).thenReturn(file("feed.xml"));
     }
 
@@ -68,7 +69,7 @@ public class TalkToGoTest {
 
     @Test
     public void shouldCallBackForEveryEntryInTheFeedUntilTheEnd() throws Exception {
-        talkToGo = new TalkToGo(httpClientWrapper, true);
+        talkToGo = new TalkToGo2DotOh(httpClientWrapper, true);
 
         when(httpClientWrapper.get("/api/feeds/stages.xml")).thenReturn(file("feed.xml"));
         stubWithParams("/api/feeds/stages.xml", "feed-2.xml", "before", 8);
@@ -87,7 +88,7 @@ public class TalkToGoTest {
 
     @Test
     public void shouldCallBackOnlyIfACriteriaMatches() throws Exception {
-        talkToGo = new TalkToGo(httpClientWrapper, false);
+        talkToGo = new TalkToGo2DotOh(httpClientWrapper, false);
 
         String feedXml = file("testdata/criteria-feed.xml");
 

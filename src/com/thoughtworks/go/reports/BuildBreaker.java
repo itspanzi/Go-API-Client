@@ -1,6 +1,6 @@
 package com.thoughtworks.go.reports;
 
-import com.thoughtworks.go.*;
+import com.thoughtworks.go.legacy.TalkToGo2DotOh;
 import com.thoughtworks.go.visitor.StageVisitor;
 import com.thoughtworks.go.http.HttpClientWrapper;
 import com.thoughtworks.go.domain.Pipeline;
@@ -13,7 +13,7 @@ public class BuildBreaker {
 
     public static void main(String[] args) {
         HttpClientWrapper wrapper = new HttpClientWrapper("go03.thoughtworks.com", 8153);
-        TalkToGo talkToGo = new TalkToGo(wrapper, false);
+        TalkToGo2DotOh talkToGo = new TalkToGo2DotOh(wrapper, false);
         talkToGo.visitAllStages(new BuildBreakers("pair02", "dev"));
     }
 
