@@ -2,11 +2,10 @@ package com.thoughtworks.go;
 
 import com.thoughtworks.go.domain.Pipeline;
 import com.thoughtworks.go.domain.Stage;
-import com.thoughtworks.go.domain.FeedEntry;
 import com.thoughtworks.go.domain.FeedEntries;
 import com.thoughtworks.go.http.HttpClientWrapper;
-import com.thoughtworks.go.visitorcriteria.StageVisitor;
-import com.thoughtworks.go.visitorcriteria.VisitingCriteria;
+import com.thoughtworks.go.visitor.StageVisitor;
+import com.thoughtworks.go.visitor.criteria.VisitingCriteria;
 import org.apache.commons.io.FileUtils;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;

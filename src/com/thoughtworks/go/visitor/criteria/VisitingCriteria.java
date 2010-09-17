@@ -1,4 +1,4 @@
-package com.thoughtworks.go.visitorcriteria;
+package com.thoughtworks.go.visitor.criteria;
 
 import com.thoughtworks.go.domain.FeedEntry;
 

@@ -7,8 +7,8 @@ import com.thoughtworks.go.domain.Stage;
 import com.thoughtworks.go.http.HttpClientWrapper;
 import static com.thoughtworks.go.http.HttpClientWrapper.scrub;
 import com.thoughtworks.go.util.UrlUtil;
-import com.thoughtworks.go.visitorcriteria.StageVisitor;
-import com.thoughtworks.go.visitorcriteria.VisitingCriteria;
+import com.thoughtworks.go.visitor.StageVisitor;
+import com.thoughtworks.go.visitor.criteria.VisitingCriteria;
 
 import java.util.List;
 
