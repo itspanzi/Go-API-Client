@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+/**
+ * @understands some common API needed to deal with URLs
+ */
 public class UrlUtil {
 
     public static Map<String, String> parametersFrom(String url) {

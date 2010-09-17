@@ -1,4 +1,4 @@
-package com.thoughtworks.go;
+package com.thoughtworks.go.visitorcriteria;
 
 import com.thoughtworks.go.domain.Pipeline;
 import com.thoughtworks.go.domain.Stage;

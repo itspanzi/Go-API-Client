@@ -2,7 +2,11 @@ package com.thoughtworks.go;
 
 import com.thoughtworks.go.domain.Pipeline;
 import com.thoughtworks.go.domain.Stage;
+import com.thoughtworks.go.domain.FeedEntry;
+import com.thoughtworks.go.domain.FeedEntries;
 import com.thoughtworks.go.http.HttpClientWrapper;
+import com.thoughtworks.go.visitorcriteria.StageVisitor;
+import com.thoughtworks.go.visitorcriteria.VisitingCriteria;
 import org.apache.commons.io.FileUtils;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -80,6 +84,30 @@ public class TalkToGoTest {
         verify(visitor).visitStage(Stage.create(file("stage-8.xml")));
         verify(visitor).visitStage(Stage.create(file("stage-7.xml")));
         verify(visitor).visitStage(Stage.create(file("stage-6.xml")));
+    }
+
+    @Test
+    public void shouldCallBackOnlyIfACriteriaMatches() throws Exception {
+        talkToGo = new TalkToGo(httpClientWrapper, false);
+
+        String feedXml = file("testdata/criteria-feed.xml");
+
+        FeedEntries feedEntries = FeedEntries.create(feedXml);
+        when(httpClientWrapper.get("/api/feeds/stages.xml")).thenReturn(feedXml);
+        when(httpClientWrapper.get("/api/stages/10.xml")).thenReturn(file("testdata/stage-10.xml"));
+
+        when(httpClientWrapper.get("/api/stages/11.xml")).thenReturn(file("testdata/stage-11.xml"));
+        when(httpClientWrapper.get("/api/pipelines/pipeline/9.xml")).thenReturn(file("testdata/pipeline-8.xml"));
+
+        VisitingCriteria criteria = mock(VisitingCriteria.class);
+        when(criteria.shouldVisit(feedEntries.getEntries().get(0))).thenReturn(true);
+        when(criteria.shouldVisit(feedEntries.getEntries().get(1))).thenReturn(false);
+        StageVisitor visitor = mock(StageVisitor.class);
+        talkToGo.visitStages(visitor, criteria);
+
+        verify(visitor).visitStage(Stage.create(file("testdata/stage-11.xml")));
+        verify(visitor).visitPipeline(Pipeline.create(file("testdata/pipeline-8.xml")));
+        verifyNoMoreInteractions(visitor);
     }
 
     private void stubVisiting() throws IOException {
