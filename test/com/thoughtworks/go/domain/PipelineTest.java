@@ -1,4 +1,4 @@
-package com.thoughtworks.go;
+package com.thoughtworks.go.domain;
 
 import org.junit.Test;
 import static org.junit.Assert.assertThat;
@@ -7,6 +7,8 @@ import static org.hamcrest.core.Is.is;
 
 import java.io.IOException;
 import java.io.File;
+
+import com.thoughtworks.go.domain.Pipeline;
 
 public class PipelineTest {
 

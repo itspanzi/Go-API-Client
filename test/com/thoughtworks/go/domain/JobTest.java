@@ -1,16 +1,17 @@
-package com.thoughtworks.go;
+package com.thoughtworks.go.domain;
 
 import org.junit.Test;
 import static org.junit.Assert.assertThat;
 import org.apache.commons.io.FileUtils;
 import static org.hamcrest.core.Is.is;
 import org.joda.time.format.ISODateTimeFormat;
-import org.joda.time.DateTime;
 
 import java.io.IOException;
 import java.io.File;
 import java.util.List;
 import java.util.Date;
+
+import com.thoughtworks.go.domain.Job;
 
 public class JobTest {
 

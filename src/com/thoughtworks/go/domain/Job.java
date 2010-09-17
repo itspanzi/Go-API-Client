@@ -1,4 +1,4 @@
-package com.thoughtworks.go;
+package com.thoughtworks.go.domain;
 
 import static com.thoughtworks.go.util.XmlUtil.*;
 import org.dom4j.Document;

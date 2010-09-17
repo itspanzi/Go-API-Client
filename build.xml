@@ -1,86 +1,89 @@
 <project name="TalkToGo" default="jar">
 
-  <path id="test-dependencies">
-    <fileset dir="lib">
-      <include name="junit-4.7.jar" />
-      <include name="mockito-all-1.8.0.jar" />
-    </fileset>
-  </path>
-
-  <path id="dependencies">
-    <fileset dir="lib">
-      <include name="*.jar" />
-      <exclude name="junit-4.7.jar" />
-      <exclude name="mockito-all-1.8.0.jar" />
-    </fileset>
-  </path>
-
-  <target name="init">
-    <delete dir="target"/>
-    <delete dir="reports" />
-    <mkdir dir="target/classes/prod" />
-    <mkdir dir="target/classes/test" />
-    <mkdir dir="reports/xml/junit" />
-  </target>
-
-  <target name="compile-prod" depends="init">
-    <javac debug="true"
-           encoding="UTF-8"
-           destdir="target/classes/prod"
-           compiler="javac1.6">
-      <src path="src" />
-      <classpath>
-        <path  refid="dependencies" />
-      </classpath>
-    </javac>
-      
-  </target>
-
-  <target name="compile-test" depends="compile-prod">
-    <javac debug="true"
-           encoding="UTF-8"
-           destdir="target/classes/test"
-           compiler="javac1.6">
-      <src path="test" />
-      <classpath>
-        <path refid="test-dependencies" />
-        <path refid="dependencies" />
-        <path location="target/classes/prod" />
-      </classpath>
-    </javac>
-
-  </target>
-
-
-  <target name="test" depends="compile-test">
-    <mkdir dir="reports/xml/junit" />
-
-    <junit fork="yes" forkmode="once" showoutput="true" printsummary="on" failureproperty="build-failed">
-      <classpath>
-        <path refid="dependencies" />
-        <path refid="test-dependencies" />
-        <path location="target/classes/prod" />
-        <path location="target/classes/test" />
-      </classpath>
-
-      <formatter type="plain" usefile="false" />
-      <formatter type="xml" />
-
-      <batchtest todir="reports/xml/junit">
-        <fileset dir="test">
-          <include name="**/*Test.java" />
+    <path id="test-dependencies">
+        <fileset dir="lib">
+            <include name="junit-4.7.jar"/>
+            <include name="mockito-all-1.8.0.jar"/>
         </fileset>
-      </batchtest>
-    </junit>
+    </path>
 
-    <fail if="build-failed" message="Build halted due to failed tests!"/>
+    <path id="dependencies">
+        <fileset dir="lib">
+            <include name="*.jar"/>
+            <exclude name="junit-4.7.jar"/>
+            <exclude name="mockito-all-1.8.0.jar"/>
+        </fileset>
+    </path>
 
-  </target>
+    <target name="clean">
+        <delete dir="target"/>
+        <delete dir="reports"/>
+    </target>
 
-  <target name="jar" depends="test">
-    <jar jarfile="talk-to-go-0.0.jar">
-      <fileset dir="target/classes/prod" />
-    </jar>
-  </target>
+    <target name="init" depends="clean">
+        <mkdir dir="target/classes/prod"/>
+        <mkdir dir="target/classes/test"/>
+        <mkdir dir="reports/xml/junit"/>
+    </target>
+
+    <target name="compile-prod" depends="init">
+        <javac debug="true"
+               encoding="UTF-8"
+               destdir="target/classes/prod"
+               compiler="javac1.6">
+            <src path="src"/>
+            <classpath>
+                <path refid="dependencies"/>
+            </classpath>
+        </javac>
+
+    </target>
+
+    <target name="compile-test" depends="compile-prod">
+        <javac debug="true"
+               encoding="UTF-8"
+               destdir="target/classes/test"
+               compiler="javac1.6">
+            <src path="test"/>
+            <classpath>
+                <path refid="test-dependencies"/>
+                <path refid="dependencies"/>
+                <path location="target/classes/prod"/>
+            </classpath>
+        </javac>
+
+    </target>
+
+
+    <target name="test" depends="compile-test">
+        <mkdir dir="reports/xml/junit"/>
+
+        <junit fork="yes" forkmode="once" showoutput="true" printsummary="on" failureproperty="build-failed">
+            <classpath>
+                <path refid="dependencies"/>
+                <path refid="test-dependencies"/>
+                <path location="target/classes/prod"/>
+                <path location="target/classes/test"/>
+            </classpath>
+
+            <formatter type="plain" usefile="false"/>
+            <formatter type="xml"/>
+
+            <batchtest todir="reports/xml/junit">
+                <fileset dir="test">
+                    <include name="**/*Test.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+
+        <fail if="build-failed" message="Build halted due to failed tests!"/>
+
+    </target>
+
+    <target name="jar" depends="test">
+        <jar jarfile="go-api-client-0.0.jar">
+            <fileset dir="target/classes/prod"/>
+        </jar>
+    </target>
 
 </project>

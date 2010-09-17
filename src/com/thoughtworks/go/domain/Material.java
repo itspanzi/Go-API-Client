@@ -1,4 +1,4 @@
-package com.thoughtworks.go;
+package com.thoughtworks.go.domain;
 
 import com.thoughtworks.go.util.XmlUtil;
 import static com.thoughtworks.go.util.XmlUtil.*;

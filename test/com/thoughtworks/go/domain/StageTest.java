@@ -1,4 +1,4 @@
-package com.thoughtworks.go;
+package com.thoughtworks.go.domain;
 
 import org.junit.Test;
 import static org.junit.Assert.assertThat;
@@ -12,6 +12,10 @@ import java.io.File;
 import java.util.List;
 
 import static junit.framework.Assert.fail;
+import com.thoughtworks.go.domain.Pipeline;
+import com.thoughtworks.go.domain.Job;
+import com.thoughtworks.go.domain.Stage;
+import com.thoughtworks.go.http.HttpClientWrapper;
 
 public class StageTest {
 

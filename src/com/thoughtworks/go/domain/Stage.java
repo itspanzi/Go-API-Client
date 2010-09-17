@@ -1,11 +1,13 @@
-package com.thoughtworks.go;
+package com.thoughtworks.go.domain;
 
 import com.thoughtworks.go.util.XmlUtil;
 import static com.thoughtworks.go.util.XmlUtil.*;
-import static com.thoughtworks.go.HttpClientWrapper.scrub;
+import static com.thoughtworks.go.http.HttpClientWrapper.scrub;
+import com.thoughtworks.go.http.HttpClientWrapper;
+import com.thoughtworks.go.domain.Pipeline;
+import com.thoughtworks.go.domain.Job;
 import org.dom4j.Document;
 import org.dom4j.Element;
-import org.dom4j.Node;
 
 import java.util.List;
 import java.util.ArrayList;

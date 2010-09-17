@@ -1,9 +1,10 @@
-package com.thoughtworks.go;
+package com.thoughtworks.go.domain;
 
 import org.dom4j.Document;
 import org.dom4j.Element;
 import static com.thoughtworks.go.util.XmlUtil.*;
 import static com.thoughtworks.go.util.XmlUtil.nodes;
+import com.thoughtworks.go.domain.Material;
 
 import java.util.List;
 import java.util.ArrayList;

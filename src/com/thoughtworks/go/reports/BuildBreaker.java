@@ -1,6 +1,9 @@
 package com.thoughtworks.go.reports;
 
 import com.thoughtworks.go.*;
+import com.thoughtworks.go.http.HttpClientWrapper;
+import com.thoughtworks.go.domain.Pipeline;
+import com.thoughtworks.go.domain.Stage;
 
 import java.util.HashMap;
 import java.util.Map;

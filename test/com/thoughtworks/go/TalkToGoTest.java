@@ -12,6 +12,10 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 
+import com.thoughtworks.go.domain.Pipeline;
+import com.thoughtworks.go.domain.Stage;
+import com.thoughtworks.go.http.HttpClientWrapper;
+
 public class TalkToGoTest {
     private HttpClientWrapper httpClientWrapper;
     private TalkToGo talkToGo;

@@ -1,6 +1,9 @@
 package com.thoughtworks.go;
 
 import com.thoughtworks.go.util.XmlUtil;
+import com.thoughtworks.go.domain.Pipeline;
+import com.thoughtworks.go.domain.Stage;
+import com.thoughtworks.go.http.HttpClientWrapper;
 import org.dom4j.Element;
 
 import java.util.List;

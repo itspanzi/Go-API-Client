@@ -1,4 +1,4 @@
-package com.thoughtworks.go;
+package com.thoughtworks.go.http;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.UsernamePasswordCredentials;

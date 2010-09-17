@@ -1,13 +1,12 @@
 package com.thoughtworks.go.reports;
 
 import com.thoughtworks.go.*;
+import com.thoughtworks.go.http.HttpClientWrapper;
+import com.thoughtworks.go.domain.Pipeline;
+import com.thoughtworks.go.domain.Job;
+import com.thoughtworks.go.domain.Stage;
 
 import java.util.*;
-
-import org.joda.time.DateTime;
-import org.joda.time.format.ISODateTimeFormat;
-
-import javax.xml.datatype.Duration;
 
 public class AgentUtilization {
 
