@@ -83,4 +83,12 @@ public class FeedEntry {
                 ", resoureLink='" + resoureLink + '\'' +
                 '}';
     }
+
+    public boolean matchesStage(String stageName) {
+        return getTitle().matches(stageNameRegex(stageName));
+    }
+
+    private String stageNameRegex(String stageName) {
+        return String.format("^.*?/\\d+/%s/\\d+", stageName);
+    }
 }
