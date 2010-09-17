@@ -1,20 +1,19 @@
 package com.thoughtworks.go;
 
-import org.junit.Test;
-import org.junit.Before;
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.core.Is.is;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import org.apache.commons.io.FileUtils;
-
-import java.io.File;
-import java.io.IOException;
-
 import com.thoughtworks.go.domain.Pipeline;
 import com.thoughtworks.go.domain.Stage;
 import com.thoughtworks.go.http.HttpClientWrapper;
+import org.apache.commons.io.FileUtils;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+import org.junit.Before;
+import org.junit.Test;
+import static org.mockito.Mockito.*;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TalkToGoTest {
     private HttpClientWrapper httpClientWrapper;
@@ -23,7 +22,7 @@ public class TalkToGoTest {
     @Before
     public void setup() throws IOException {
         httpClientWrapper = mock(HttpClientWrapper.class);
-        talkToGo = new TalkToGo(httpClientWrapper);
+        talkToGo = new TalkToGo(httpClientWrapper, false);
         when(httpClientWrapper.get("/api/feeds/stages.xml")).thenReturn(file("feed.xml"));
     }
 
@@ -41,7 +40,7 @@ public class TalkToGoTest {
     }
 
     @Test
-    public void shouldCallBackForEveryEntryInTheFeed() throws Exception {
+    public void shouldCallBackForEveryEntryInTheLimitedFeed() throws Exception {
         Stage stage9 = Stage.create(file("stage-9.xml"));
         Pipeline pipeline9 = Pipeline.create(file("pipeline-9.xml"));
 
@@ -61,6 +60,46 @@ public class TalkToGoTest {
         verify(visitor).visitPipeline(pipeline9);
         verify(visitor).visitStage(stage8);
         verify(visitor).visitPipeline(pipeline8);
+        verifyNoMoreInteractions(visitor);
+    }
+
+    @Test
+    public void shouldCallBackForEveryEntryInTheFeedUntilTheEnd() throws Exception {
+        talkToGo = new TalkToGo(httpClientWrapper, true);
+
+        when(httpClientWrapper.get("/api/feeds/stages.xml")).thenReturn(file("feed.xml"));
+        stubWithParams("/api/feeds/stages.xml", "feed-2.xml", "before", 8);
+        stubWithParams("/api/feeds/stages.xml", "feed-3.xml", "before", 6);
+        stubVisiting();
+
+        StageVisitor visitor = mock(StageVisitor.class);
+
+        talkToGo.visitAllStages(visitor);
+
+        verify(visitor).visitStage(Stage.create(file("stage-9.xml")));
+        verify(visitor).visitStage(Stage.create(file("stage-8.xml")));
+        verify(visitor).visitStage(Stage.create(file("stage-7.xml")));
+        verify(visitor).visitStage(Stage.create(file("stage-6.xml")));
+    }
+
+    private void stubVisiting() throws IOException {
+        when(httpClientWrapper.get("/api/stages/9.xml")).thenReturn(file("stage-9.xml"));
+        when(httpClientWrapper.get("/api/pipelines/pipeline/9.xml")).thenReturn(file("pipeline-9.xml"));
+
+        when(httpClientWrapper.get("/api/stages/8.xml")).thenReturn(file("stage-8.xml"));
+        when(httpClientWrapper.get("/api/pipelines/pipeline/8.xml")).thenReturn(file("pipeline-8.xml"));
+
+        when(httpClientWrapper.get("/api/stages/7.xml")).thenReturn(file("stage-7.xml"));
+        when(httpClientWrapper.get("/api/pipelines/pipeline/7.xml")).thenReturn(file("pipeline-8.xml"));
+
+        when(httpClientWrapper.get("/api/stages/6.xml")).thenReturn(file("stage-6.xml"));
+        when(httpClientWrapper.get("/api/pipelines/pipeline/6.xml")).thenReturn(file("pipeline-8.xml"));
+    }
+
+    private void stubWithParams(String path, String resourceFile, String param, int value) throws IOException {
+        Map<String, String> methodParams = new HashMap<String, String>();
+        methodParams.put(param, value + "");
+        when(httpClientWrapper.get(path, methodParams)).thenReturn(file(resourceFile));
     }
 
     private String file(String name) throws IOException {

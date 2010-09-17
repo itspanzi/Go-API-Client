@@ -12,7 +12,7 @@ public class BuildBreaker {
 
     public static void main(String[] args) {
         HttpClientWrapper wrapper = new HttpClientWrapper("go03.thoughtworks.com", 8153);
-        TalkToGo talkToGo = new TalkToGo(wrapper);
+        TalkToGo talkToGo = new TalkToGo(wrapper, false);
         talkToGo.visitAllStages(new BuildBreakers("pair02", "dev"));
     }
 

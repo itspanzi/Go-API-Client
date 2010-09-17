@@ -12,7 +12,7 @@ public class AgentUtilization {
 
     public static void main(String[] args) {
         HttpClientWrapper wrapper = new HttpClientWrapper("go03.thoughtworks.com", 8153);
-        TalkToGo talkToGo = new TalkToGo(wrapper);
+        TalkToGo talkToGo = new TalkToGo(wrapper, false);
         final Map<String, List<Job>> agentToJobs = new HashMap<String, List<Job>>();
         final Stage[] lastStage = new Stage[1];
         talkToGo.visitAllStages(new StageVisitor() {

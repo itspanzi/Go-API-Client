@@ -2,10 +2,13 @@ package com.thoughtworks.go.http;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.UsernamePasswordCredentials;
+import org.apache.commons.httpclient.params.HttpParams;
+import org.apache.commons.httpclient.params.HttpMethodParams;
 import org.apache.commons.httpclient.auth.AuthScope;
 import org.apache.commons.httpclient.methods.GetMethod;
 
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * @understands communicating with the Go server using http
@@ -28,8 +31,15 @@ public class HttpClientWrapper {
     }
 
     public String get(String path) {
+        return get(path, null);
+    }
+
+    public String get(String path, Map<String, String> params) {
         try {
             GetMethod getMethod = new GetMethod(baseUrl() + path);
+            if (params != null) {
+                getMethod.setParams(httpParams(params));
+            }
             int returnCode = client().executeMethod(getMethod);
             if (returnCode >= 200 && returnCode <= 200) {
                 return getMethod.getResponseBodyAsString();
@@ -38,6 +48,14 @@ public class HttpClientWrapper {
         } catch (IOException e) {
             throw new RuntimeException("Connection pooped", e);
         }
+    }
+
+    private HttpMethodParams httpParams(Map<String, String> params) {
+        HttpMethodParams methodParams = new HttpMethodParams();
+        for (String param : params.keySet()) {
+            methodParams.setParameter(param,  params.get(param));
+        }
+        return methodParams;
     }
 
     private String baseUrl() {

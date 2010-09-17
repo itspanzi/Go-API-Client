@@ -1,9 +1,11 @@
 package com.thoughtworks.go;
 
-import com.thoughtworks.go.util.XmlUtil;
 import com.thoughtworks.go.domain.Pipeline;
 import com.thoughtworks.go.domain.Stage;
 import com.thoughtworks.go.http.HttpClientWrapper;
+import com.thoughtworks.go.util.UrlUtil;
+import com.thoughtworks.go.util.XmlUtil;
+import org.dom4j.Document;
 import org.dom4j.Element;
 
 import java.util.List;
@@ -14,9 +16,11 @@ import java.util.List;
 @SuppressWarnings({"unchecked"})
 public class TalkToGo {
     private final HttpClientWrapper httpClient;
+    private final boolean infiniteCrawler;
 
-    public TalkToGo(HttpClientWrapper httpClient) {
+    public TalkToGo(HttpClientWrapper httpClient, boolean infiniteCrawler) {
         this.httpClient = httpClient;
+        this.infiniteCrawler = infiniteCrawler;
     }
 
     public Pipeline latestPipelineFor(String name) {
@@ -47,8 +51,14 @@ public class TalkToGo {
     }
 
     private List<Element> stageFeedEntries() {
-        String feed = httpClient.get("/api/feeds/stages.xml");
-        return (List<Element>) XmlUtil.parse(feed).selectNodes("//a:entry");
+        Document feed = XmlUtil.parse(httpClient.get("/api/feeds/stages.xml"));
+        List<Element> elements = (List<Element>) feed.selectNodes("//a:entry");
+        while (infiniteCrawler && XmlUtil.singleNode(feed, "//a:link[@rel='next']") != null) {
+            Element next = XmlUtil.singleNode(feed, "//a:link[@rel='next']");
+            feed = XmlUtil.parse(httpClient.get("/api/feeds/stages.xml", UrlUtil.parametersFrom(XmlUtil.attrVal(next, "href"))));
+            elements.addAll((List<Element>) feed.selectNodes("//a:entry"));
+        }
+        return elements;
     }
 
     private String stageResource(Element entry) {
@@ -81,4 +91,6 @@ public class TalkToGo {
             }
         }
     }
+
+
 }
