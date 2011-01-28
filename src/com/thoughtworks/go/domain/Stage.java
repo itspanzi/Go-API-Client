@@ -127,6 +127,10 @@ public class Stage {
         return state.equals("Completed") && result.equalsIgnoreCase("Failed");
     }
 
+    public String getStageLocator() {
+        return String.format("%s/%s/%s/%s", getPipelineName(), getPipelineCounter(), getName(), getCounter());
+    }
+
     private static class StagePipeline {
 
         String pipelineName;

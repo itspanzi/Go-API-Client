@@ -112,6 +112,10 @@ public class Material {
             result = 31 * result + (message != null ? message.hashCode() : 0);
             return result;
         }
+
+        public String getUser() {
+            return user;
+        }
     }
 
     @Override

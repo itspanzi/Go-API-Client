@@ -24,7 +24,7 @@ public abstract class AbstractTalkToGo implements TalkToGo {
     }
 
     protected Stage stage(FeedEntry entry) {
-        Stage stage = Stage.create(httpClient.get(com.thoughtworks.go.http.HttpClientWrapper.scrub(entry.getResourceLink(), "/api/stages/")));
+        Stage stage = Stage.create(httpClient.get(HttpClientWrapper.scrub(entry.getResourceLink(), "/api/stages/")));
         stage.using(httpClient);
         return stage;
     }
@@ -72,7 +72,7 @@ public abstract class AbstractTalkToGo implements TalkToGo {
             if (criteria.shouldVisit(entry)) {
                 visit(visitor, entry);
             }
-            if (!criteria.shouldContinue()) {
+            if (!criteria.shouldContinueVisiting()) {
                 return;
             }
         }

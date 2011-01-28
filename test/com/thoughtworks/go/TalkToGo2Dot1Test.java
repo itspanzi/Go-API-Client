@@ -126,7 +126,7 @@ public class TalkToGo2Dot1Test {
         VisitingCriteria criteria = mock(VisitingCriteria.class);
         when(criteria.shouldVisit(feedEntries.getEntries().get(0))).thenReturn(true);
         when(criteria.shouldVisit(feedEntries.getEntries().get(1))).thenReturn(true);
-        when(criteria.shouldContinue()).thenReturn(false);
+        when(criteria.shouldContinueVisiting()).thenReturn(false);
 
         StageVisitor visitor = mock(StageVisitor.class);
         talkToGo.visitStages(visitor, criteria);

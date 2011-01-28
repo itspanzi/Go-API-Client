@@ -15,8 +15,6 @@ public class TalkToGo2Dot1 extends AbstractTalkToGo {
         this.pipelineName = pipelineName;
     }
 
-
-
     protected String feedUrl() {
         return String.format("/api/pipelines/%s/stages.xml", pipelineName);
     }

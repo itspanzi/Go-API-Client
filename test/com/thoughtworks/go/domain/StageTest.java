@@ -31,6 +31,7 @@ public class StageTest {
         assertThat(stage.getResult(), is("Failed"));
         assertThat(stage.getState(), is("Completed"));
         assertThat(stage.getApprovedBy(), is("CruiseTimer"));
+        assertThat(stage.getStageLocator(), is("pipeline/9/stage/1"));
     }
 
     @Test

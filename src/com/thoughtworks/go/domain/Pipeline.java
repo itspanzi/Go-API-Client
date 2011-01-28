@@ -116,4 +116,8 @@ public class Pipeline {
         result = 31 * result + (approvedBy != null ? approvedBy.hashCode() : 0);
         return result;
     }
+
+    public List<Material> materials() {
+        return materials;
+    }
 }
