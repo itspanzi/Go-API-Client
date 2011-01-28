@@ -7,4 +7,6 @@ import com.thoughtworks.go.domain.FeedEntry;
  */
 public interface VisitingCriteria {
     boolean shouldVisit(FeedEntry feedEntry);
+
+    boolean shouldContinue();
 }

@@ -15,4 +15,8 @@ public class MatchingStageVisitor implements VisitingCriteria {
     public boolean shouldVisit(FeedEntry feedEntry) {
         return feedEntry.matchesStage(stageName);
     }
+
+    public boolean shouldContinue() {
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

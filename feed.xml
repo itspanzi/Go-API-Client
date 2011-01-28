@@ -5,7 +5,7 @@
         <name>Cruise</name>
     </author>
     <updated>2010-07-30T22:00:17+05:30</updated>
-    <link rel="self" href="http://go03.thoughtworks.com:8153/go/api/feeds/stages.xml"/>
+    <link rel="self" href="http://go03.thoughtworks.com:8153/go/api/pipelines/pipeline/stages.xml"/>
 
 
     <link rel="previous" href="http://go03.thoughtworks.com:8153/go/api/feeds/stages.xml?after=412084"/>

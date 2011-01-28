@@ -2,6 +2,7 @@ package com.thoughtworks.go;
 
 import com.thoughtworks.go.domain.FeedEntries;
 import com.thoughtworks.go.domain.FeedEntry;
+import com.thoughtworks.go.domain.Pipeline;
 import com.thoughtworks.go.domain.Stage;
 import com.thoughtworks.go.http.HttpClientWrapper;
 import com.thoughtworks.go.util.UrlUtil;
@@ -71,6 +72,34 @@ public abstract class AbstractTalkToGo implements TalkToGo {
             if (criteria.shouldVisit(entry)) {
                 visit(visitor, entry);
             }
+            if (!criteria.shouldContinue()) {
+                return;
+            }
         }
+    }
+
+    protected Stage findLatestStageFor(String pipeline, String stage) {
+        List<FeedEntry> entries = stageFeedEntries();
+        for (FeedEntry entry : entries) {
+            if (matchesStage(pipeline, stage, entry)) {
+                return stage(entry);
+            }
+        }
+        throw new RuntimeException(String.format("Cannot find the stage [%s under %s]", stage, pipeline));
+    }
+
+    protected Pipeline findLatestPipeline(String name) {
+        List<FeedEntry> entries = stageFeedEntries();
+        for (FeedEntry entry : entries) {
+            if (matchesPipeline(name, entry)) {
+                Stage stage = stage(entry);
+                return stage.using(httpClient).getPipeline();
+            }
+        }
+        throw new RuntimeException(String.format("Cannot find the pipeline [%s]", name));
+    }
+
+    private boolean matchesPipeline(String pipelineName, FeedEntry entry) {
+        return entry.getTitle().matches(String.format("^%s/.*?/.*?/\\d+", pipelineName));
     }
 }

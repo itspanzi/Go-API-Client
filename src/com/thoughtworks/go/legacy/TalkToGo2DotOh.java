@@ -24,27 +24,11 @@ public class TalkToGo2DotOh extends AbstractTalkToGo {
     }
 
     public Pipeline latestPipelineFor(String name) {
-        List<FeedEntry> entries = stageFeedEntries();
-        for (FeedEntry entry : entries) {
-            if (matchesPipeline(name, entry)) {
-                Stage stage = stage(entry);
-                return stage.using(httpClient).getPipeline();
-            }
-        }
-        throw new RuntimeException(String.format("Cannot find the pipeline [%s]", name));
+        return findLatestPipeline(name);
     }
 
     public Stage latestStageFor(String pipeline, String stage) {
-        List<FeedEntry> entries = stageFeedEntries();
-        for (FeedEntry entry : entries) {
-            if (matchesStage(pipeline, stage, entry)) {
-                return stage(entry);
-            }
-        }
-        throw new RuntimeException(String.format("Cannot find the stage [%s under %s]", stage, pipeline));
+        return findLatestStageFor(pipeline, stage);
     }
 
-    private boolean matchesPipeline(String pipelineName, FeedEntry entry) {
-        return entry.getTitle().matches(String.format("^%s/.*?/.*?/\\d+", pipelineName));
-    }
 }

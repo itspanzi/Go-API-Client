@@ -9,10 +9,10 @@ import org.dom4j.Element;
 public class FeedEntry {
     private String title;
     private String updatedDate;
-    private long id;
+    private String id;
     private String resoureLink;
 
-    public FeedEntry(String title, String updatedDate, long id, String resoureLink) {
+    public FeedEntry(String title, String updatedDate, String id, String resoureLink) {
         this.title = title;
         this.updatedDate = updatedDate;
         this.id = id;
@@ -27,7 +27,7 @@ public class FeedEntry {
         return updatedDate;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
@@ -38,7 +38,7 @@ public class FeedEntry {
     public static FeedEntry create(Element element) {
         String title = XmlUtil.nodeText(element, ".//a:title");
         String updatedDate = XmlUtil.nodeText(element, ".//a:updated");
-        long id = Long.parseLong(XmlUtil.nodeText(element, ".//a:id"));
+        String id = XmlUtil.nodeText(element, ".//a:id");
         String resoureLink = XmlUtil.attrVal(link(element), "href");
         return new FeedEntry(title, updatedDate, id, resoureLink);
     }
@@ -54,7 +54,7 @@ public class FeedEntry {
 
         FeedEntry feedEntry = (FeedEntry) o;
 
-        if (id != feedEntry.id) return false;
+        if (!id.equals(feedEntry.id)) return false;
         if (resoureLink != null ? !resoureLink.equals(feedEntry.resoureLink) : feedEntry.resoureLink != null)
             return false;
         if (title != null ? !title.equals(feedEntry.title) : feedEntry.title != null) return false;
@@ -68,7 +68,7 @@ public class FeedEntry {
     public int hashCode() {
         int result = title != null ? title.hashCode() : 0;
         result = 31 * result + (updatedDate != null ? updatedDate.hashCode() : 0);
-        result = 31 * result + (int) (id ^ (id >>> 32));
+        result = 31 * result + (id != null ? id.hashCode() : 0);
         result = 31 * result + (resoureLink != null ? resoureLink.hashCode() : 0);
         return result;
     }

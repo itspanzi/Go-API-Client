@@ -9,13 +9,13 @@ public class MatchingStageCriteriaTest {
 
     @Test
     public void shouldReturnTrueIfFeedEntryIsForAGivenStage() throws Exception {
-        assertThat(new MatchingStageVisitor("stage").shouldVisit(new FeedEntry("pipeline/1/stage/1", "", -1L, "")), is(true));
-        assertThat(new MatchingStageVisitor("stage-1").shouldVisit(new FeedEntry("stage/1/stage-1/1", "", -1L, "")), is(true));
+        assertThat(new MatchingStageVisitor("stage").shouldVisit(new FeedEntry("pipeline/1/stage/1", "", "id", "")), is(true));
+        assertThat(new MatchingStageVisitor("stage-1").shouldVisit(new FeedEntry("stage/1/stage-1/1", "", "id", "")), is(true));
     }
 
     @Test
     public void shouldReturnFalseIfFeedEntryIsForNotAGivenStage() throws Exception {
-        assertThat(new MatchingStageVisitor("stage").shouldVisit(new FeedEntry("stage/1/pipeline/1", "", -1L, "")), is(false));
-        assertThat(new MatchingStageVisitor("stage-2").shouldVisit(new FeedEntry("stage/1/stage-1/1", "", -1L, "")), is(false));
+        assertThat(new MatchingStageVisitor("stage").shouldVisit(new FeedEntry("stage/1/pipeline/1", "", "id", "")), is(false));
+        assertThat(new MatchingStageVisitor("stage-2").shouldVisit(new FeedEntry("stage/1/stage-1/1", "", "id", "")), is(false));
     }
 }
