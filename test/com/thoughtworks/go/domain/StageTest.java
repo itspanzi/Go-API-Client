@@ -9,7 +9,10 @@ import static org.mockito.Mockito.when;
 
 import java.io.IOException;
 import java.io.File;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.TimeZone;
 
 import static junit.framework.Assert.fail;
 import com.thoughtworks.go.domain.Pipeline;
@@ -27,9 +30,12 @@ public class StageTest {
         assertThat(stage.getPipelineName(), is("pipeline"));
         assertThat(stage.getPipelineCounter(), is(9));
         assertThat(stage.getPipelineLabel(), is("83"));
-        assertThat(stage.getLastUpdated(), is("2010-07-30T22:00:15+05:30"));
+        //"2010-07-30T22:00:15+05:30"
+        GregorianCalendar gregorianCalendar = new GregorianCalendar(2010, 6, 30, 22, 0, 15);
+        gregorianCalendar.setTimeZone(TimeZone.getTimeZone("Asia/Calcutta"));
+        assertThat(stage.getLastUpdated(), is(gregorianCalendar.getTime()));
         assertThat(stage.getResult(), is("Failed"));
-        assertThat(stage.getState(), is("Completed"));
+        assertThat(stage.getState(), is(StageState.Failing));
         assertThat(stage.getApprovedBy(), is("CruiseTimer"));
         assertThat(stage.getStageLocator(), is("pipeline/9/stage/1"));
     }
