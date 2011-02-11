@@ -33,7 +33,7 @@ public class TalkToGo2Dot1Test {
     @Test
     public void shouldReturnTheLatestStage() throws Exception {
         when(httpClientWrapper.get("/api/stages/9.xml")).thenReturn(file("stage-9.xml"));
-        assertThat(talkToGo.latestStageFor("stage"), is(Stage.create(file("stage-9.xml"))));
+        assertThat(talkToGo.latestStage("stage"), is(Stage.create(file("stage-9.xml"))));
     }
 
     @Test

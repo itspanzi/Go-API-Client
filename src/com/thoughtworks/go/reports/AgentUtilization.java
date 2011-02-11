@@ -16,7 +16,7 @@ public class AgentUtilization {
 
     public static void main(String[] args) {
         HttpClientWrapper wrapper = new HttpClientWrapper("blrstdcrspair03.thoughtworks.com", 8153, "admin", "badger");
-        TalkToGo2DotOh talkToGo = new TalkToGo2DotOh(wrapper, false);
+        TalkToGo2DotOh talkToGo = new TalkToGo2DotOh("pair02", wrapper, false);
         final Map<String, List<Job>> agentToJobs = new HashMap<String, List<Job>>();
         final Stage[] lastStage = new Stage[1];
         talkToGo.visitAllStages(new StageVisitor() {

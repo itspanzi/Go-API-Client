@@ -12,15 +12,17 @@ import com.thoughtworks.go.visitor.criteria.VisitingCriteria;
 import java.util.List;
 
 /**
- * ADD_UNDERSTANDS_BLOCK
+ * @understands the commonality across versions
  */
 public abstract class AbstractTalkToGo implements TalkToGo {
     protected final HttpClientWrapper httpClient;
     protected final boolean infiniteCrawler;
+    protected String pipelineName;
 
-    public AbstractTalkToGo(HttpClientWrapper httpClient, boolean infiniteCrawler) {
+    public AbstractTalkToGo(String pipelineName, HttpClientWrapper httpClient, boolean infiniteCrawler) {
         this.httpClient = httpClient;
         this.infiniteCrawler = infiniteCrawler;
+        this.pipelineName = pipelineName;
     }
 
     protected Stage stage(FeedEntry entry) {
@@ -101,5 +103,13 @@ public abstract class AbstractTalkToGo implements TalkToGo {
 
     private boolean matchesPipeline(String pipelineName, FeedEntry entry) {
         return entry.getTitle().matches(String.format("^%s/.*?/.*?/\\d+", pipelineName));
+    }
+
+    public Pipeline latestPipeline() {
+        return findLatestPipeline(pipelineName);
+    }
+
+    public Stage latestStage(String stageName) {
+        return findLatestStageFor(pipelineName, stageName);
     }
 }
