@@ -27,7 +27,7 @@ public class TalkToGo2Dot1Test {
     public void setup() throws IOException {
         httpClientWrapper = mock(HttpClientWrapper.class);
         talkToGo = new TalkToGo2Dot1("pipeline", httpClientWrapper, false);
-        when(httpClientWrapper.get("/api/pipelines/pipeline/stages.xml")).thenReturn(file("feed.xml"));
+        when(httpClientWrapper.get("/api/pipelines/pipeline/stages.xml")).thenReturn(file("2.0/feed.xml"));
     }
 
     @Test
@@ -71,9 +71,9 @@ public class TalkToGo2Dot1Test {
     public void shouldCallBackForEveryEntryInTheFeedUntilTheEnd() throws Exception {
         talkToGo = new TalkToGo2Dot1("pipeline", httpClientWrapper, true);
 
-        when(httpClientWrapper.get("/api/pipelines/pipeline/stages.xml")).thenReturn(file("feed.xml"));
-        stubWithParams("/api/pipelines/pipeline/stages.xml", "feed-2.xml", "before", 8);
-        stubWithParams("/api/pipelines/pipeline/stages.xml", "feed-3.xml", "before", 6);
+        when(httpClientWrapper.get("/api/pipelines/pipeline/stages.xml")).thenReturn(file("2.0/feed.xml"));
+        stubWithParams("/api/pipelines/pipeline/stages.xml", "2.0/feed-2.xml", "before", 8);
+        stubWithParams("/api/pipelines/pipeline/stages.xml", "2.0/feed-3.xml", "before", 6);
         stubVisiting();
 
         StageVisitor visitor = mock(StageVisitor.class);
@@ -90,14 +90,14 @@ public class TalkToGo2Dot1Test {
     public void shouldCallBackOnlyIfACriteriaMatches() throws Exception {
         talkToGo = new TalkToGo2Dot1("pipeline", httpClientWrapper, false);
 
-        String feedXml = file("testdata/criteria-feed.xml");
+        String feedXml = file("2.1/criteria-feed.xml");
 
         FeedEntries feedEntries = FeedEntries.create(feedXml);
         when(httpClientWrapper.get("/api/pipelines/pipeline/stages.xml")).thenReturn(feedXml);
-        when(httpClientWrapper.get("/api/stages/8.xml")).thenReturn(file("testdata/stage-10.xml"));
+        when(httpClientWrapper.get("/api/stages/8.xml")).thenReturn(file("stage-10.xml"));
 
-        when(httpClientWrapper.get("/api/stages/9.xml")).thenReturn(file("testdata/stage-11.xml"));
-        when(httpClientWrapper.get("/api/pipelines/pipeline/9.xml")).thenReturn(file("testdata/pipeline-8.xml"));
+        when(httpClientWrapper.get("/api/stages/9.xml")).thenReturn(file("stage-11.xml"));
+        when(httpClientWrapper.get("/api/pipelines/pipeline/9.xml")).thenReturn(file("pipeline-8.xml"));
 
         VisitingCriteria criteria = mock(VisitingCriteria.class);
         when(criteria.shouldVisit(feedEntries.getEntries().get(0))).thenReturn(true);
@@ -105,8 +105,8 @@ public class TalkToGo2Dot1Test {
         StageVisitor visitor = mock(StageVisitor.class);
         talkToGo.visitStages(visitor, criteria);
 
-        verify(visitor).visitStage(Stage.create(file("testdata/stage-11.xml")));
-        verify(visitor).visitPipeline(Pipeline.create(file("testdata/pipeline-8.xml")));
+        verify(visitor).visitStage(Stage.create(file("stage-11.xml")));
+        verify(visitor).visitPipeline(Pipeline.create(file("pipeline-8.xml")));
         verifyNoMoreInteractions(visitor);
     }
 
@@ -114,14 +114,14 @@ public class TalkToGo2Dot1Test {
     public void shouldCallEndCrawlingIfCriteriaSaysSo() throws Exception {
         talkToGo = new TalkToGo2Dot1("pipeline", httpClientWrapper, false);
 
-        String feedXml = file("testdata/criteria-feed.xml");
+        String feedXml = file("2.1/criteria-feed.xml");
 
         FeedEntries feedEntries = FeedEntries.create(feedXml);
         when(httpClientWrapper.get("/api/pipelines/pipeline/stages.xml")).thenReturn(feedXml);
-        when(httpClientWrapper.get("/api/stages/8.xml")).thenReturn(file("testdata/stage-10.xml"));
+        when(httpClientWrapper.get("/api/stages/8.xml")).thenReturn(file("stage-10.xml"));
 
-        when(httpClientWrapper.get("/api/stages/9.xml")).thenReturn(file("testdata/stage-11.xml"));
-        when(httpClientWrapper.get("/api/pipelines/pipeline/9.xml")).thenReturn(file("testdata/pipeline-8.xml"));
+        when(httpClientWrapper.get("/api/stages/9.xml")).thenReturn(file("stage-11.xml"));
+        when(httpClientWrapper.get("/api/pipelines/pipeline/9.xml")).thenReturn(file("pipeline-8.xml"));
 
         VisitingCriteria criteria = mock(VisitingCriteria.class);
         when(criteria.shouldVisit(feedEntries.getEntries().get(0))).thenReturn(true);
@@ -131,8 +131,8 @@ public class TalkToGo2Dot1Test {
         StageVisitor visitor = mock(StageVisitor.class);
         talkToGo.visitStages(visitor, criteria);
 
-        verify(visitor).visitStage(Stage.create(file("testdata/stage-11.xml")));
-        verify(visitor).visitPipeline(Pipeline.create(file("testdata/pipeline-8.xml")));
+        verify(visitor).visitStage(Stage.create(file("stage-11.xml")));
+        verify(visitor).visitPipeline(Pipeline.create(file("pipeline-8.xml")));
         verifyNoMoreInteractions(visitor);
     }
 
@@ -157,6 +157,6 @@ public class TalkToGo2Dot1Test {
     }
 
     private String file(String name) throws IOException {
-        return FileUtils.readFileToString(new File(name));
+        return FileUtils.readFileToString(new File("testdata/" + name));
     }
 }

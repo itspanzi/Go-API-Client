@@ -17,7 +17,7 @@ public class JobTest {
 
     @Test
     public void shouldCreateJob() throws Exception {
-        Job job = Job.create(file("job-2.xml"));
+        Job job = Job.create(file("testdata/job-2.xml"));
         assertThat(job.getName(), is("two"));
         assertThat(job.getPipelineName(), is("pipeline"));
         assertThat(job.getPipelineCounter(), is(9));
@@ -34,7 +34,7 @@ public class JobTest {
 
     @Test
     public void shouldHaveTheTimeTheJobSpentOnAnAgent() throws Exception {
-        Job job = Job.create(file("job-with-properties.xml"));
+        Job job = Job.create(file("testdata/job-with-properties.xml"));
 
         Date started = ISODateTimeFormat.dateTimeNoMillis().parseDateTime("2010-07-08T11:56:49+05:30").toDate();
         Date finished = ISODateTimeFormat.dateTimeNoMillis().parseDateTime("2010-07-08T11:57:03+05:30").toDate();

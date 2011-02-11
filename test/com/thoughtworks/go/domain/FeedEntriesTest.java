@@ -14,7 +14,7 @@ public class FeedEntriesTest {
 
     @Test
     public void shouldCreateFeedEntry() throws Exception {
-        FeedEntries feedEntries = FeedEntries.create(file("testdata/criteria-feed.xml"));
+        FeedEntries feedEntries = FeedEntries.create(file("testdata/2.1/criteria-feed.xml"));
 
         assertThat(feedEntries.getNextLink(), is("http://blrstdcrspair03.thoughtworks.com:8153/go/api/pipelines/5/stages.xml?before=37"));
         List<FeedEntry> entries = feedEntries.getEntries();

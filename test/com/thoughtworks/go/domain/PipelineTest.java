@@ -14,7 +14,7 @@ public class PipelineTest {
 
     @Test
     public void shouldReturnWhoTriggerThePipeline() throws Exception {
-        Pipeline pipeline = Pipeline.create(file("pipeline-9.xml"));
+        Pipeline pipeline = Pipeline.create(file("testdata/pipeline-9.xml"));
         assertThat(pipeline.getApprovedBy(), is("CruiseTimer"));
     }
 
