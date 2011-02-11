@@ -54,6 +54,15 @@
 
     </target>
 
+     <target name="-load.short.rev">
+        <exec executable="git" outputproperty="short_rev">
+            <arg line="describe --always"/>
+        </exec>
+        <property name="api_client.basename" value="go-api-client-g${short_rev}"/>
+        <property name="api_client.jar.name" value="${api_client.basename}.jar"/>
+        <property name="api_client.src.jar.name" value="${api_client.basename}-src.jar"/>
+    </target>
+
 
     <target name="test" depends="compile-test">
         <mkdir dir="reports/xml/junit"/>
@@ -80,10 +89,9 @@
 
     </target>
 
-    <target name="jar" depends="test">
-        <jar jarfile="go-api-client-0.0.jar">
+    <target name="jar" depends="test, -load.short.rev">
+        <jar jarfile="${api_client.jar.name}">
             <fileset dir="target/classes/prod"/>
         </jar>
     </target>
-
 </project>

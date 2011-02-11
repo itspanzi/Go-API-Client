@@ -74,9 +74,8 @@ public class HttpClientWrapper {
     }
 
     private void cacheResponse(String response, HttpURL httpURL) {
-        File file = responseCacheFile(httpURL);
         try {
-            FileUtils.writeStringToFile(file, response);
+            FileUtils.writeStringToFile(responseCacheFile(httpURL), response);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -94,7 +93,7 @@ public class HttpClientWrapper {
     private void populateEtagIfRequired(HttpMethod method, URI httpURL) {
         if (SystemEnvironment.shouldUseCahce() && etagCacheFile(httpURL).exists()) {
             try {
-                method.addRequestHeader("Etag", FileUtils.readFileToString(etagCacheFile(httpURL)));
+                method.addRequestHeader("If-None-Match", FileUtils.readFileToString(etagCacheFile(httpURL)));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -114,7 +113,7 @@ public class HttpClientWrapper {
 
     private File etagCacheFile(URI httpURL) {
         try {
-            String fileName = new String(DigestUtils.md5(httpURL.getURI())) + "_etag";
+            String fileName = DigestUtils.md5Hex(httpURL.getURI()) + "_etag";
             return new File(SystemEnvironment.getCacheFolder(), fileName);
         } catch (URIException e) {
             throw new RuntimeException(e);
@@ -123,7 +122,7 @@ public class HttpClientWrapper {
 
     private File responseCacheFile(HttpURL httpURL) {
         try {
-            String fileName = new String(DigestUtils.md5(httpURL.getURI()));
+            String fileName = DigestUtils.md5Hex(httpURL.getURI());
             return new File(SystemEnvironment.getCacheFolder(), fileName);
         } catch (Exception e) {
             throw new RuntimeException(e);
