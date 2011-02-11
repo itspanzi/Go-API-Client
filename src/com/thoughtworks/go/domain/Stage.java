@@ -2,12 +2,16 @@ package com.thoughtworks.go.domain;
 
 import com.thoughtworks.go.http.HttpClientWrapper;
 import static com.thoughtworks.go.http.HttpClientWrapper.scrub;
+
+import com.thoughtworks.go.util.DataTypeUtil;
 import com.thoughtworks.go.util.XmlUtil;
 import static com.thoughtworks.go.util.XmlUtil.*;
 import org.dom4j.Document;
 import org.dom4j.Element;
+import org.joda.time.format.ISODateTimeFormat;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,14 +21,14 @@ public class Stage {
     private final String name;
     private final int counter;
     private final StagePipeline pipeline;
-    private final String lastUpdated;
+    private final Date lastUpdated;
     private final String result;
     private final StageState state;
     private final String approvedBy;
     private final List<StageJob> stageJobs;
     private HttpClientWrapper httpClientWrapper;
 
-    private Stage(String name, int counter, StagePipeline pipeline, String lastUpdated, String result, StageState state, String approvedBy, List<StageJob> stageJobs) {
+    private Stage(String name, int counter, StagePipeline pipeline, Date lastUpdated, String result, StageState state, String approvedBy, List<StageJob> stageJobs) {
         this.name = name;
         this.counter = counter;
         this.pipeline = pipeline;
@@ -41,7 +45,7 @@ public class Stage {
         String counter = attrVal(singleNode(doc, "/stage"), "counter");
         Element pipeline = singleNode(doc, "//pipeline");
         StagePipeline pip = new StagePipeline(attrVal(pipeline, "name"), attrVal(pipeline, "counter"), attrVal(pipeline, "label"), attrVal(pipeline, "href"));
-        String lastUpdated = nodeText(doc, "//updated");
+        Date lastUpdated = DataTypeUtil.toDate(nodeText(doc, "//updated"));
         String result = nodeText(doc, "//result");
         StageState state = StageState.valueOf(nodeText(doc, "//state"));
         String approvedBy = nodeText(doc, "//approvedBy");
@@ -82,7 +86,7 @@ public class Stage {
         return pipeline.pipelineLabel;
     }
 
-    public String getLastUpdated() {
+    public Date getLastUpdated() {
         return lastUpdated;
     }
 
