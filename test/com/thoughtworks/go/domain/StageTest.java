@@ -29,7 +29,7 @@ public class StageTest {
         assertThat(stage.getPipelineLabel(), is("83"));
         assertThat(stage.getLastUpdated(), is("2010-07-30T22:00:15+05:30"));
         assertThat(stage.getResult(), is("Failed"));
-        assertThat(stage.getState(), is("Completed"));
+        assertThat(stage.getState(), is(StageState.Failing));
         assertThat(stage.getApprovedBy(), is("CruiseTimer"));
         assertThat(stage.getStageLocator(), is("pipeline/9/stage/1"));
     }

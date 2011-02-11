@@ -19,12 +19,12 @@ public class Stage {
     private final StagePipeline pipeline;
     private final String lastUpdated;
     private final String result;
-    private final String state;
+    private final StageState state;
     private final String approvedBy;
     private final List<StageJob> stageJobs;
     private HttpClientWrapper httpClientWrapper;
 
-    private Stage(String name, int counter, StagePipeline pipeline, String lastUpdated, String result, String state, String approvedBy, List<StageJob> stageJobs) {
+    private Stage(String name, int counter, StagePipeline pipeline, String lastUpdated, String result, StageState state, String approvedBy, List<StageJob> stageJobs) {
         this.name = name;
         this.counter = counter;
         this.pipeline = pipeline;
@@ -43,7 +43,7 @@ public class Stage {
         StagePipeline pip = new StagePipeline(attrVal(pipeline, "name"), attrVal(pipeline, "counter"), attrVal(pipeline, "label"), attrVal(pipeline, "href"));
         String lastUpdated = nodeText(doc, "//updated");
         String result = nodeText(doc, "//result");
-        String state = nodeText(doc, "//state");
+        StageState state = StageState.valueOf(nodeText(doc, "//state"));
         String approvedBy = nodeText(doc, "//approvedBy");
         List<StageJob> stageJobs = stageJobs(doc);
         return new Stage(name, Integer.parseInt(counter), pip, lastUpdated, result, state, approvedBy, stageJobs);
@@ -90,7 +90,7 @@ public class Stage {
         return result;
     }
 
-    public String getState() {
+    public StageState getState() {
         return state;
     }
 

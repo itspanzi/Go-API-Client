@@ -4,7 +4,7 @@
     <pipeline name="pipeline" counter="6" label="83" href="http://go03.thoughtworks.com:8153/go/api/pipelines/pipeline/6.xml"/>
     <updated>2010-07-30T22:00:15+05:30</updated>
     <result>Failed</result>
-    <state>Completed</state>
+    <state>Failed</state>
     <approvedBy><![CDATA[CruiseTimer]]></approvedBy>
     <jobs>
         <job href="http://go03.thoughtworks.com:8153/go/api/jobs/1.xml" />
