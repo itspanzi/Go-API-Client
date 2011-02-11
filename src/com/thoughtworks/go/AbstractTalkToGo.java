@@ -25,16 +25,54 @@ public abstract class AbstractTalkToGo implements TalkToGo {
         this.pipelineName = pipelineName;
     }
 
-    protected Stage stage(FeedEntry entry) {
+    public void visitAllStages(StageVisitor visitor) {
+        List<FeedEntry> entries = stageFeedEntries();
+        for (FeedEntry entry : entries) {
+            visit(visitor, entry);
+        }
+    }
+
+    public void visitStages(StageVisitor visitor, VisitingCriteria criteria) {
+        while (true) {
+            FeedEntries feedEntries = nextEntries();
+            if (visitEntries(feedEntries.getEntries(), visitor, criteria) || !infiniteCrawler || feedEntries.getNextLink() == null) {
+                break;
+            }
+        }
+    }
+
+    private boolean visitEntries(List<FeedEntry> entries, StageVisitor visitor, VisitingCriteria criteria) {
+        for (FeedEntry entry : entries) {
+            if (criteria.shouldVisit(entry)) {
+                visit(visitor, entry);
+            }
+            if (!criteria.shouldContinueVisiting()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Stage latestStage(String stageName) {
+        return findLatestStageFor(pipelineName, stageName);
+    }
+
+    public Pipeline latestPipeline() {
+        return findLatestPipeline(pipelineName);
+    }
+
+    protected abstract String feedUrl();
+
+    private Stage stage(FeedEntry entry) {
         Stage stage = Stage.create(httpClient.get(HttpClientWrapper.scrub(entry.getResourceLink(), "/api/stages/")));
         stage.using(httpClient);
         return stage;
     }
 
-    protected List<FeedEntry> stageFeedEntries() {
-        String feedText = httpClient.get(feedUrl());
-        FeedEntries feedEntries = FeedEntries.create(feedText);
+    private List<FeedEntry> stageFeedEntries() {
+        FeedEntries feedEntries = nextEntries();
         List<FeedEntry> elements = feedEntries.getEntries();
+        String feedText;
         while (infiniteCrawler && feedEntries.getNextLink() != null) {
             feedText = httpClient.get(feedUrl(), UrlUtil.parametersFrom(feedEntries.getNextLink()));
             feedEntries = FeedEntries.create(feedText);
@@ -43,17 +81,13 @@ public abstract class AbstractTalkToGo implements TalkToGo {
         return elements;
     }
 
-    protected abstract String feedUrl();
-    
-    protected boolean matchesStage(String pipeline, String stage, FeedEntry entry) {
-        return entry.matchesStage(pipeline, stage);
+    private FeedEntries nextEntries() {
+        String feedText = httpClient.get(feedUrl());
+        return FeedEntries.create(feedText);
     }
 
-    public void visitAllStages(StageVisitor visitor) {
-        List<FeedEntry> entries = stageFeedEntries();
-        for (FeedEntry entry : entries) {
-            visit(visitor, entry);
-        }
+    private boolean matchesStage(String pipeline, String stage, FeedEntry entry) {
+        return entry.matchesStage(pipeline, stage);
     }
 
     private void visit(StageVisitor visitor, FeedEntry entry) {
@@ -68,19 +102,7 @@ public abstract class AbstractTalkToGo implements TalkToGo {
         }
     }
 
-    public void visitStages(StageVisitor visitor, VisitingCriteria criteria) {
-        List<FeedEntry> entries = stageFeedEntries();
-        for (FeedEntry entry : entries) {
-            if (criteria.shouldVisit(entry)) {
-                visit(visitor, entry);
-            }
-            if (!criteria.shouldContinueVisiting()) {
-                return;
-            }
-        }
-    }
-
-    protected Stage findLatestStageFor(String pipeline, String stage) {
+    private Stage findLatestStageFor(String pipeline, String stage) {
         List<FeedEntry> entries = stageFeedEntries();
         for (FeedEntry entry : entries) {
             if (matchesStage(pipeline, stage, entry)) {
@@ -90,7 +112,7 @@ public abstract class AbstractTalkToGo implements TalkToGo {
         throw new RuntimeException(String.format("Cannot find the stage [%s under %s]", stage, pipeline));
     }
 
-    protected Pipeline findLatestPipeline(String name) {
+    private Pipeline findLatestPipeline(String name) {
         List<FeedEntry> entries = stageFeedEntries();
         for (FeedEntry entry : entries) {
             if (matchesPipeline(name, entry)) {
@@ -103,13 +125,5 @@ public abstract class AbstractTalkToGo implements TalkToGo {
 
     private boolean matchesPipeline(String pipelineName, FeedEntry entry) {
         return entry.getTitle().matches(String.format("^%s/.*?/.*?/\\d+", pipelineName));
-    }
-
-    public Pipeline latestPipeline() {
-        return findLatestPipeline(pipelineName);
-    }
-
-    public Stage latestStage(String stageName) {
-        return findLatestStageFor(pipelineName, stageName);
     }
 }

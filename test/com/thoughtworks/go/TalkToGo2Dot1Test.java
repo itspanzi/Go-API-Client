@@ -151,9 +151,14 @@ public class TalkToGo2Dot1Test {
     }
 
     private void stubWithParams(String path, String resourceFile, String param, int value) throws IOException {
+        Map<String, String> methodParams = paramMap(param, value);
+        when(httpClientWrapper.get(path, methodParams)).thenReturn(file(resourceFile));
+    }
+
+    private Map<String, String> paramMap(String param, int value) {
         Map<String, String> methodParams = new HashMap<String, String>();
         methodParams.put(param, value + "");
-        when(httpClientWrapper.get(path, methodParams)).thenReturn(file(resourceFile));
+        return methodParams;
     }
 
     private String file(String name) throws IOException {
