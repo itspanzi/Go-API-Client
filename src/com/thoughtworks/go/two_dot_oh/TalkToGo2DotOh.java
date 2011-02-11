@@ -1,8 +1,9 @@
-package com.thoughtworks.go.legacy;
+package com.thoughtworks.go.two_dot_oh;
 
 import com.thoughtworks.go.AbstractTalkToGo;
 import com.thoughtworks.go.domain.Pipeline;
 import com.thoughtworks.go.domain.Stage;
+import com.thoughtworks.go.domain.FeedEntry;
 import com.thoughtworks.go.http.HttpClientWrapper;
 
 /**
@@ -18,5 +19,8 @@ public class TalkToGo2DotOh extends AbstractTalkToGo {
     @Override
     protected String feedUrl() {
         return "/api/feeds/stages.xml";
+    }
+
+    protected void enhance(Stage stage, FeedEntry entry) {
     }
 }

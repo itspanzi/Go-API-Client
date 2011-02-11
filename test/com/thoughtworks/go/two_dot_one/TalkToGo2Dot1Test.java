@@ -1,4 +1,4 @@
-package com.thoughtworks.go;
+package com.thoughtworks.go.two_dot_one;
 
 import com.thoughtworks.go.domain.FeedEntries;
 import com.thoughtworks.go.domain.Pipeline;
@@ -6,6 +6,7 @@ import com.thoughtworks.go.domain.Stage;
 import com.thoughtworks.go.http.HttpClientWrapper;
 import com.thoughtworks.go.visitor.StageVisitor;
 import com.thoughtworks.go.visitor.criteria.VisitingCriteria;
+import com.thoughtworks.go.two_dot_one.TalkToGo2Dot1;
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;

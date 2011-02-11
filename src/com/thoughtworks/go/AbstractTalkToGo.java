@@ -63,8 +63,11 @@ public abstract class AbstractTalkToGo implements TalkToGo {
 
     protected abstract String feedUrl();
 
+    protected abstract void enhance(Stage stage, FeedEntry entry);
+
     private Stage stage(FeedEntry entry) {
         Stage stage = Stage.create(httpClient.get(HttpClientWrapper.scrub(entry.getResourceLink(), "/api/stages/")));
+        enhance(stage, entry);
         stage.using(httpClient);
         return stage;
     }

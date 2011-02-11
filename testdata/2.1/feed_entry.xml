@@ -1,0 +1,13 @@
+<entry>
+    <title><![CDATA[5/2/AutoStage1/1]]></title>
+    <updated>2011-01-28T14:23:37+05:30</updated>
+    <id>http://blrstdcrspair03.thoughtworks.com:8153/go/pipelines/5/2/AutoStage1/1</id>
+    <link href="http://blrstdcrspair03.thoughtworks.com:8153/go/api/stages/9.xml" rel="alternate"/>
+    <link href="http://blrstdcrspair03.thoughtworks.com:8153/go/pipelines/5/2/AutoStage1/1" rel="alternate"
+          type="text/html"/>
+    <link href="http://blrstdcrspair03.thoughtworks.com:8153/go/api/pipelines/5/33.xml"
+          rel="http://studios.thoughtworks.com/ns/relations/go/pipeline" type="text/xml"/>
+    <category scheme="http://studios.thoughtworks.com/ns/categories/go" term="stage" label="Stage"/>
+    <category scheme="http://studios.thoughtworks.com/ns/categories/go" term="completed" label="Completed"/>
+    <category scheme="http://studios.thoughtworks.com/ns/categories/go" term="failed" label="Failed"/>
+</entry>

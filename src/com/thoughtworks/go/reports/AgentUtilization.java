@@ -4,7 +4,7 @@ import com.thoughtworks.go.domain.Job;
 import com.thoughtworks.go.domain.Pipeline;
 import com.thoughtworks.go.domain.Stage;
 import com.thoughtworks.go.http.HttpClientWrapper;
-import com.thoughtworks.go.legacy.TalkToGo2DotOh;
+import com.thoughtworks.go.two_dot_oh.TalkToGo2DotOh;
 import com.thoughtworks.go.visitor.StageVisitor;
 
 import java.util.ArrayList;
