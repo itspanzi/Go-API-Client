@@ -41,7 +41,7 @@ public class HttpClientWrapperTest {
         assertThat(mockHttpClient.requestEtag, is(nullValue()));
 
         wrapper.get("/go/api/stages");
-        assertThat(mockHttpClient.requestEtag.getName(), is("Etag"));
+        assertThat(mockHttpClient.requestEtag.getName(), is("If-None-Match"));
         assertThat(mockHttpClient.requestEtag.getValue(), is("123"));
     }
 
@@ -80,7 +80,7 @@ public class HttpClientWrapperTest {
 
         @Override
         public int executeMethod(HttpMethod httpMethod) throws IOException {
-            this.requestEtag = httpMethod.getRequestHeader("Etag");
+            this.requestEtag = httpMethod.getRequestHeader("If-None-Match");
             if (requestEtag == null) {
                 ((MockGetMethod) httpMethod).addHeader("Etag", "123");
                 return 200;
@@ -95,7 +95,7 @@ public class HttpClientWrapperTest {
 
         @Override
         public int executeMethod(HttpMethod httpMethod) throws IOException {
-            this.requestEtag = httpMethod.getRequestHeader("Etag");
+            this.requestEtag = httpMethod.getRequestHeader("If-None-Match");
             if (requestEtag == null) {
                 ((MockGetMethod) httpMethod).addHeader("Etag", "123");
             }
