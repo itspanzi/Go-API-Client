@@ -1,10 +1,11 @@
 package com.thoughtworks.go.reports;
 
+import com.thoughtworks.go.TalkToGo;
 import com.thoughtworks.go.domain.Job;
 import com.thoughtworks.go.domain.Pipeline;
 import com.thoughtworks.go.domain.Stage;
 import com.thoughtworks.go.http.HttpClientWrapper;
-import com.thoughtworks.go.two_dot_oh.TalkToGo2DotOh;
+import com.thoughtworks.go.latest.TalkToGoLatest;
 import com.thoughtworks.go.visitor.StageVisitor;
 
 import java.util.ArrayList;
@@ -16,7 +17,8 @@ public class AgentUtilization {
 
     public static void main(String[] args) {
         HttpClientWrapper wrapper = new HttpClientWrapper("blrstdcrspair03.thoughtworks.com", 8153, "admin", "badger");
-        TalkToGo2DotOh talkToGo = new TalkToGo2DotOh("pair02", wrapper, false);
+        TalkToGo talkToGo = new TalkToGoLatest("pair02", wrapper, false) {
+        };
         final Map<String, List<Job>> agentToJobs = new HashMap<String, List<Job>>();
         final Stage[] lastStage = new Stage[1];
         talkToGo.visitAllStages(new StageVisitor() {

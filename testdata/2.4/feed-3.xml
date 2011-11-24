@@ -1,0 +1,9 @@
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title><![CDATA[pair03]]></title>
+    <id>http://go03.thoughtworks.com:8153/go/api/pipelines/pair03/stages.xml</id>
+    <author>
+        <name>Go</name>
+    </author>
+    <updated>2011-11-24T12:24:13+05:30</updated>
+    <link rel="self" href="http://go03.thoughtworks.com:8153/go/api/pipelines/pair03/stages.xml"/>
+</feed>

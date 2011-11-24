@@ -14,22 +14,22 @@ public class FeedEntriesTest {
 
     @Test
     public void shouldCreateFeedEntry() throws Exception {
-        FeedEntries feedEntries = FeedEntries.create(file("testdata/2.1/criteria-feed.xml"));
+        FeedEntries feedEntries = FeedEntries.create(file("testdata/2.4/feed.xml"));
 
-        assertThat(feedEntries.getNextLink(), is("http://blrstdcrspair03.thoughtworks.com:8153/go/api/pipelines/5/stages.xml?before=37"));
+        assertThat(feedEntries.getNextLink(), is("http://go03.thoughtworks.com:8153/go/api/pipelines/pair03/stages.xml?before=8"));
         List<FeedEntry> entries = feedEntries.getEntries();
         assertThat(entries.size(), is(2));
-        assertFeedEntry(entries.get(0), "5/2/AutoStage1/1", "2011-01-28T14:23:37+05:30", "http://blrstdcrspair03.thoughtworks.com:8153/go/pipelines/5/2/AutoStage1/1", "http://blrstdcrspair03.thoughtworks.com:8153/go/api/stages/9.xml");
-        assertFeedEntry(entries.get(1), "5/1/AutoStage4/1", "2011-01-28T14:23:15+05:30", "http://blrstdcrspair03.thoughtworks.com:8153/go/pipelines/5/1/AutoStage4/1", "http://blrstdcrspair03.thoughtworks.com:8153/go/api/stages/8.xml");
+        assertFeedEntry(entries.get(0), "pipeline(9) stage stage(1) Failed", "2011-01-28T14:23:37+05:30", "http://go03.thoughtworks.com:8153/go/pipelines/pair03/696/build/1", "http://go03.thoughtworks.com:8153/go/api/stages/9.xml");
+        assertFeedEntry(entries.get(1), "pipeline(8) stage stage(1) Failed", "2011-01-28T14:23:15+05:30", "http://go03.thoughtworks.com:8153/go/pipelines/pair03/695/build/1", "http://go03.thoughtworks.com:8153/go/api/stages/8.xml");
     }
 
 //    <entry>
 //            <title><![CDATA[5/2/AutoStage1/1]]></title>
 //            <updated>2011-01-28T14:23:37+05:30</updated>
-//            <id>http://blrstdcrspair03.thoughtworks.com:8153/go/pipelines/5/2/AutoStage1/1</id>
-//            <link href="http://blrstdcrspair03.thoughtworks.com:8153/go/api/stages/36.xml" rel="alternate"/>
-//            <link href="http://blrstdcrspair03.thoughtworks.com:8153/go/pipelines/5/2/AutoStage1/1" rel="alternate" type="text/html"/>
-//            <link href="http://blrstdcrspair03.thoughtworks.com:8153/go/api/pipelines/5/33.xml" rel="http://studios.thoughtworks.com/ns/relations/go/pipeline" type="text/xml"/>
+//            <id>http://go03.thoughtworks.com:8153/go/pipelines/5/2/AutoStage1/1</id>
+//            <link href="http://go03.thoughtworks.com:8153/go/api/stages/36.xml" rel="alternate"/>
+//            <link href="http://go03.thoughtworks.com:8153/go/pipelines/5/2/AutoStage1/1" rel="alternate" type="text/html"/>
+//            <link href="http://go03.thoughtworks.com:8153/go/api/pipelines/5/33.xml" rel="http://studios.thoughtworks.com/ns/relations/go/pipeline" type="text/xml"/>
 //            <category scheme="http://studios.thoughtworks.com/ns/categories/go" term="stage" label="Stage" />
 //            <category scheme="http://studios.thoughtworks.com/ns/categories/go" term="completed" label="Completed" />
 //            <category scheme="http://studios.thoughtworks.com/ns/categories/go" term="failed" label="Failed" />

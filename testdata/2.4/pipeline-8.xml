@@ -1,5 +1,5 @@
 <pipeline name="pipeline" counter="8" label="83">
-    <link rel="self" href="http://go03.thoughtworks.com:8153/go/api/pipelines/pipeline/9.xml"/>
+    <link rel="self" href="http://go03.thoughtworks.com:8153/go/api/pipelines/pipeline/8.xml"/>
     <id><![CDATA[urn:x-go.studios.thoughtworks.com:job-id:natural-ordering-bisect:83]]></id>
     <link rel="insertedAfter" href="http://go03.thoughtworks.com:8153/go/api/pipelines/natural-ordering-bisect/5771.xml"/>
     <scheduleTime>2010-07-30T22:00:00+05:30</scheduleTime>

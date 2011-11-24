@@ -15,7 +15,7 @@ public class MaterialTest {
 
     @Test
     public void shouldCreateMaterialForHgMaterial() throws Exception {
-        Material material = Material.create(file("testdata/hg-material.xml"));
+        Material material = Material.create(file("testdata/2.4/hg-material.xml"));
         assertThat(material.getType(), is("HgMaterial"));
         assertThat(material.getUrl(), is("foo/bar"));
         List<Material.Change> changes = material.getChanges();
@@ -26,7 +26,7 @@ public class MaterialTest {
 
     @Test
     public void shouldCreateMaterialForSvnMaterial() throws Exception {
-        Material material = Material.create(file("testdata/svn-material.xml"));
+        Material material = Material.create(file("testdata/2.4/svn-material.xml"));
         assertThat(material.getType(), is("SvnMaterial"));
         assertThat(material.getUrl(), is("tingtong"));
         assertThat(material.getUsername(), is(""));
@@ -38,7 +38,7 @@ public class MaterialTest {
 
     @Test
     public void shouldCreateMaterialForDependencyMaterial() throws Exception {
-        Material material = Material.create(file("testdata/pipeline-material.xml"));
+        Material material = Material.create(file("testdata/2.4/pipeline-material.xml"));
         assertThat(material.getType(), is("DependencyMaterial"));
         assertThat(material.getPipelineName(), is("application"));
         assertThat(material.getStageName(), is("dev"));

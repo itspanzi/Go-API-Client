@@ -92,6 +92,16 @@ public class FeedEntry {
     }
 
     public boolean matchesStage(String pipeline, String stage) {
-        return getTitle().matches(String.format("^%s/\\d+/%s/\\d+", pipeline, stage));
+        //"pipeline(9) stage stage(1) Failed"
+        return getTitle().matches(feedTitleRegex(pipeline, stage));
+    }
+
+    private String feedTitleRegex(String pipeline, String stage) {
+        return String.format("^%s\\(\\d+\\) stage %s\\(\\d+\\) .*", pipeline, stage);
+    }
+
+    public boolean matchesPipeline(String pipelineName) {
+        //"pipeline(9) stage stage(1) Failed"
+        return getTitle().matches(feedTitleRegex(pipelineName, ".*"));
     }
 }

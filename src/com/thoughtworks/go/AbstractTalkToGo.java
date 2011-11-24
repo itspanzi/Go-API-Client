@@ -118,15 +118,11 @@ public abstract class AbstractTalkToGo implements TalkToGo {
     private Pipeline findLatestPipeline(String name) {
         List<FeedEntry> entries = stageFeedEntries();
         for (FeedEntry entry : entries) {
-            if (matchesPipeline(name, entry)) {
+            if (entry.matchesPipeline(name)) {
                 Stage stage = stage(entry);
                 return stage.using(httpClient).getPipeline();
             }
         }
         throw new RuntimeException(String.format("Cannot find the pipeline [%s]", name));
-    }
-
-    private boolean matchesPipeline(String pipelineName, FeedEntry entry) {
-        return entry.getTitle().matches(String.format("^%s/.*?/.*?/\\d+", pipelineName));
     }
 }

@@ -1,0 +1,73 @@
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:go="http://www.thoughtworks-studios.com/ns/go">
+    <title><![CDATA[pair03]]></title>
+    <id>http://go03.thoughtworks.com:8153/go/api/pipelines/pair03/stages.xml</id>
+    <author>
+        <name>Go</name>
+    </author>
+    <updated>2011-01-28T14:23:37+05:30</updated>
+    <link rel="self" href="http://go03.thoughtworks.com:8153/go/api/pipelines/pair03/stages.xml"/>
+
+    <link rel="next" href="http://go03.thoughtworks.com:8153/go/api/pipelines/pair03/stages.xml?before=8"/>
+
+    <entry>
+        <title><![CDATA[pipeline(9) stage stage(1) Failed]]></title>
+        <updated>2011-01-28T14:23:37+05:30</updated>
+        <id>http://go03.thoughtworks.com:8153/go/pipelines/pair03/696/build/1</id>
+        <author>
+            <name><![CDATA[JJ]]></name>
+        </author>
+        <author>
+            <name><![CDATA[PS]]></name>
+        </author>
+        <author>
+            <name><![CDATA[SS]]></name>
+        </author>
+        <link title="build Stage Detail" href="http://go03.thoughtworks.com:8153/go/api/stages/9.xml" rel="alternate" type="application/vnd.go+xml"/>
+        <link title="build Stage Detail" href="http://go03.thoughtworks.com:8153/go/pipelines/pair03/696/build/1" rel="alternate" type="text/html"/>
+
+        <link title="pair03 Pipeline Detail" href="http://go03.thoughtworks.com:8153/go/api/pipelines/pair03/9.xml"
+              rel="http://www.thoughtworks-studios.com/ns/relations/go/pipeline" type="application/vnd.go+xml"/>
+        <link title="pair03 Pipeline Detail"
+              href="http://go03.thoughtworks.com:8153/go/pipelines/pair03/696/build/1/pipeline"
+              rel="http://www.thoughtworks-studios.com/ns/relations/go/pipeline" type="text/html"/>
+
+        <link href="https://mingle09.thoughtworks.com//api/v2/projects/go/cards/5188.xml"
+              rel="http://www.thoughtworks-studios.com/ns/go#related" type="application/vnd.mingle+xml" title="#5188"/>
+        <link href="https://mingle09.thoughtworks.com//api/v2/projects/go/cards/5601.xml"
+              rel="http://www.thoughtworks-studios.com/ns/go#related" type="application/vnd.mingle+xml" title="#5601"/>
+
+        <category scheme="http://www.thoughtworks-studios.com/ns/categories/go" term="stage" label="Stage"/>
+        <category scheme="http://www.thoughtworks-studios.com/ns/categories/go" term="completed" label="Completed"/>
+        <category scheme="http://www.thoughtworks-studios.com/ns/categories/go" term="failed" label="Failed"/>
+    </entry>
+
+    <entry>
+        <title><![CDATA[pipeline(8) stage stage(1) Failed]]></title>
+        <updated>2011-01-28T14:23:15+05:30</updated>
+        <id>http://go03.thoughtworks.com:8153/go/pipelines/pair03/695/build/1</id>
+
+        <author>
+            <name><![CDATA[Santosh]]></name>
+        </author>
+
+        <link title="build Stage Detail" href="http://go03.thoughtworks.com:8153/go/api/stages/8.xml"
+              rel="alternate" type="application/vnd.go+xml"/>
+        <link title="build Stage Detail" href="http://go03.thoughtworks.com:8153/go/pipelines/pair03/695/build/1"
+              rel="alternate" type="text/html"/>
+
+        <link title="pair03 Pipeline Detail" href="http://go03.thoughtworks.com:8153/go/api/pipelines/pair03/8.xml"
+              rel="http://www.thoughtworks-studios.com/ns/relations/go/pipeline" type="application/vnd.go+xml"/>
+        <link title="pair03 Pipeline Detail"
+              href="http://go03.thoughtworks.com:8153/go/pipelines/pair03/695/build/1/pipeline"
+              rel="http://www.thoughtworks-studios.com/ns/relations/go/pipeline" type="text/html"/>
+
+        <link href="https://mingle09.thoughtworks.com//api/v2/projects/go/cards/5514.xml"
+              rel="http://www.thoughtworks-studios.com/ns/go#related" type="application/vnd.mingle+xml" title="#5514"/>
+        <link href="https://mingle09.thoughtworks.com//projects/go/cards/5514"
+              rel="http://www.thoughtworks-studios.com/ns/go#related" type="text/html" title="#5514"/>
+
+        <category scheme="http://www.thoughtworks-studios.com/ns/categories/go" term="stage" label="Stage"/>
+        <category scheme="http://www.thoughtworks-studios.com/ns/categories/go" term="completed" label="Completed"/>
+        <category scheme="http://www.thoughtworks-studios.com/ns/categories/go" term="failed" label="Failed"/>
+    </entry>
+</feed>

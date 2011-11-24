@@ -155,6 +155,10 @@ public class Job {
         return property(propertyName).value;
     }
 
+    public JobIdentifier getJobIdentifier() {
+        return new JobIdentifier(getPipelineName(), getPipelineCounter(), getStageName(), getStageCounter(), getName());
+    }
+
     private static final class JobStage {
         private final String name;
         private final int counter;

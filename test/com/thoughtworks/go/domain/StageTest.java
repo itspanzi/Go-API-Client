@@ -24,7 +24,7 @@ public class StageTest {
 
     @Test
     public void shouldCreateAStage() throws Exception {
-        Stage stage = Stage.create(file("testdata/stage-9.xml"));
+        Stage stage = Stage.create(file("testdata/2.4/stage-9.xml"));
         assertThat(stage.getName(), is("stage"));
         assertThat(stage.getCounter(), is(1));
         assertThat(stage.getPipelineName(), is("pipeline"));
@@ -42,7 +42,7 @@ public class StageTest {
 
     @Test
     public void shouldBombWhenNoHttpClientIsSet() throws Exception {
-        Stage stage = Stage.create(file("testdata/stage-9.xml"));
+        Stage stage = Stage.create(file("testdata/2.4/stage-9.xml"));
         try {
             stage.getJobs();
             fail("Should have bombed");
@@ -53,21 +53,21 @@ public class StageTest {
 
     @Test
     public void shouldLazilyLoadJobs() throws Exception {
-        Stage stage = Stage.create(file("testdata/stage-9.xml"));
+        Stage stage = Stage.create(file("testdata/2.4/stage-9.xml"));
         HttpClientWrapper wrapper = mock(HttpClientWrapper.class);
-        when(wrapper.get("/api/jobs/1.xml")).thenReturn(file("testdata/job-1.xml"));
-        when(wrapper.get("/api/jobs/2.xml")).thenReturn(file("testdata/job-2.xml"));
+        when(wrapper.get("/api/jobs/1.xml")).thenReturn(file("testdata/2.4/job-1.xml"));
+        when(wrapper.get("/api/jobs/2.xml")).thenReturn(file("testdata/2.4/job-2.xml"));
         List<Job> jobs = stage.using(wrapper).getJobs();
         assertThat(jobs.size(), is(2));
-        assertThat(jobs.get(0), is(Job.create(file("testdata/job-1.xml"))));
-        assertThat(jobs.get(1), is(Job.create(file("testdata/job-2.xml"))));
+        assertThat(jobs.get(0), is(Job.create(file("testdata/2.4/job-1.xml"))));
+        assertThat(jobs.get(1), is(Job.create(file("testdata/2.4/job-2.xml"))));
     }
 
     @Test
     public void shouldLazilyLoadPipeline() throws Exception {
-        Stage stage = Stage.create(file("testdata/stage-9.xml"));
+        Stage stage = Stage.create(file("testdata/2.4/stage-9.xml"));
         HttpClientWrapper wrapper = mock(HttpClientWrapper.class);
-        when(wrapper.get("/api/pipelines/pipeline/9.xml")).thenReturn(file("testdata/pipeline-9.xml"));
+        when(wrapper.get("/api/pipelines/pipeline/9.xml")).thenReturn(file("testdata/2.4/pipeline-9.xml"));
         Pipeline pipeline = stage.using(wrapper).getPipeline();
         assertThat(pipeline.getApprovedBy(), is("CruiseTimer"));
     }

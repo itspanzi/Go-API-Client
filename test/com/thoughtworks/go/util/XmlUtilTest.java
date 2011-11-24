@@ -13,19 +13,19 @@ public class XmlUtilTest {
 
     @Test
     public void shouldReturnAttributeValue() throws Exception {
-        Document document = XmlUtil.parse(file("testdata/job-1.xml"));
+        Document document = XmlUtil.parse(file("testdata/2.4/job-1.xml"));
         assertThat(XmlUtil.attrVal(XmlUtil.singleNode(document, "//pipeline"), "name"), is("pipeline"));
     }
 
     @Test
     public void shouldReturnDefaultValueIfAttributeNotFound() throws Exception {
-        Document document = XmlUtil.parse(file("testdata/job-1.xml"));
+        Document document = XmlUtil.parse(file("testdata/2.4/job-1.xml"));
         assertThat(XmlUtil.attrVal(XmlUtil.singleNode(document, "//pipeline"), "foo", "pavan"), is("pavan"));
     }
 
     @Test
     public void shouldReturnNodeTextInAGivenDocument() throws Exception {
-        Document document = XmlUtil.parse(file("testdata/job-1.xml"));
+        Document document = XmlUtil.parse(file("testdata/2.4/job-1.xml"));
         assertThat(XmlUtil.nodeText(document, "//state"), is("Completed"));
     }
 
