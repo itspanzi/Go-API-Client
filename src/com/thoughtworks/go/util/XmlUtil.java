@@ -50,6 +50,11 @@ public class XmlUtil {
         return doc.selectNodes(xpath);
     }
 
+    @SuppressWarnings({"unchecked"})
+    public static List<Element> nodes(Element element, String xpath) {
+        return element.selectNodes(xpath);
+    }
+
     public static String attrVal(Element element, String attrName, String defaultValue) {
         Attribute attribute = attr(element, attrName);
         return attribute == null ? defaultValue : attribute.getValue();

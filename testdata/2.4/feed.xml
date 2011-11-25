@@ -31,9 +31,9 @@
               href="http://go03.thoughtworks.com:8153/go/pipelines/pair03/696/build/1/pipeline"
               rel="http://www.thoughtworks-studios.com/ns/relations/go/pipeline" type="text/html"/>
 
-        <link href="https://mingle09.thoughtworks.com//api/v2/projects/go/cards/5188.xml"
+        <link href="https://mingle09.thoughtworks.com/api/v2/projects/go/cards/5188.xml"
               rel="http://www.thoughtworks-studios.com/ns/go#related" type="application/vnd.mingle+xml" title="#5188"/>
-        <link href="https://mingle09.thoughtworks.com//api/v2/projects/go/cards/5601.xml"
+        <link href="https://mingle09.thoughtworks.com/api/v2/projects/go/cards/5601.xml"
               rel="http://www.thoughtworks-studios.com/ns/go#related" type="application/vnd.mingle+xml" title="#5601"/>
 
         <category scheme="http://www.thoughtworks-studios.com/ns/categories/go" term="stage" label="Stage"/>
@@ -61,9 +61,9 @@
               href="http://go03.thoughtworks.com:8153/go/pipelines/pair03/695/build/1/pipeline"
               rel="http://www.thoughtworks-studios.com/ns/relations/go/pipeline" type="text/html"/>
 
-        <link href="https://mingle09.thoughtworks.com//api/v2/projects/go/cards/5514.xml"
+        <link href="https://mingle09.thoughtworks.com/api/v2/projects/go/cards/5514.xml"
               rel="http://www.thoughtworks-studios.com/ns/go#related" type="application/vnd.mingle+xml" title="#5514"/>
-        <link href="https://mingle09.thoughtworks.com//projects/go/cards/5514"
+        <link href="https://mingle09.thoughtworks.com/projects/go/cards/5514"
               rel="http://www.thoughtworks-studios.com/ns/go#related" type="text/html" title="#5514"/>
 
         <category scheme="http://www.thoughtworks-studios.com/ns/categories/go" term="stage" label="Stage"/>
