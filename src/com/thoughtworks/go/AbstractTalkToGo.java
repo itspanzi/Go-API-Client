@@ -72,7 +72,7 @@ public abstract class AbstractTalkToGo implements TalkToGo {
         return stage;
     }
 
-    private List<FeedEntry> stageFeedEntries() {
+    public List<FeedEntry> stageFeedEntries() {
         FeedEntries feedEntries = nextEntries();
         List<FeedEntry> elements = feedEntries.getEntries();
         String feedText;

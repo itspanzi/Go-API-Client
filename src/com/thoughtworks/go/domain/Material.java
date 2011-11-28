@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @understands a material associated with a Pipeline Instance. This means, this does not represent the flyweight of a material. Instead, its an aggregation of all the changes that went into a pipeline.
+ * @understands a material instance associated with a Pipeline Instance.
+ *
+ * This is an aggregation of all the changes that went into a pipeline for the given material tag inside a pipeline.
  */
 public class Material {
     private final String type;
@@ -46,40 +48,110 @@ public class Material {
         return new Material(type, url, username, checkExternals, pipelineName, stageName, changes);
     }
 
+    /**
+     * The type of the material. It could be one of HgMaterial, SvnMaterial, GitMaterial, P4Material or DependencyMaterial.
+     * Once Go has plugins, it is the type of the material as given by the plugin.
+     *
+     * @return the type of the material.
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     * This is the URL of the material. Since not all materials have a notion of a URL, make sure a null check is done.
+     *
+     * For example a dependency material does not have this field populated.
+     *
+     * @return The URL of the material or null if it does not apply for the given material type.
+     */
     public String getUrl() {
         return url;
     }
 
+    /**
+     * Returns a list of change sets of this material for this pipeline instance. Currently there is no way of figuring
+     * out if this change set is new i.e a pipeline was not built with this change set before or not. This means every
+     * material has at least one change set.
+     *
+     * @return a list of change sets for a given material
+     */
     public List<Change> getChanges() {
         return changes;
     }
 
+    /**
+     * Returns the user name configured for the material. This is generally used by Go to authenticate against the material.
+     * This may be null if none is configured or if the material does not have a username.
+     *
+     * @return The username configured for the material or null if it is not configured or if it does not apply for the given material type.
+     */
     public String getUsername() {
         return username;
     }
 
-    public String getCheckExternals() {
-        return checkExternals;
+    /**
+     * Returns if the given SVN material is configured to check svn externals for new modifications.
+     *
+     * @return if check externals is turned on or not. If this does not apply to the given material type, returns null.
+     */
+    public Boolean getCheckExternals() {
+        return null == checkExternals ? null : Boolean.parseBoolean(checkExternals);
     }
 
+    /**
+     * Returns the upstream pipeline name which this dependency material depends on. This applies only to DependencyMaterial type.
+     *
+     * This method can return null. If the material type is actually DependencyMaterial, then a 'null' means this is the same as the
+     * pipeline to which this material belongs to. If the type is not DependencyMaterial, then a 'null' just indicates the type difference. 
+     *
+     * @return the name of the upstream pipeline which this dependency material depends on or null.
+     */
     public String getPipelineName() {
         return pipelineName;
     }
 
+    /**
+     * Returns the upstream pipeline's stage name which this dependency material depends on. This applies only to DependencyMaterial type.
+     *
+     * This method can return null which just indicates the type difference.
+     *
+     * @return the name of the upstream pipeline's stage which this dependency material depends on or null.
+     */
     public String getStageName() {
         return stageName;
     }
 
+    /**
+     * @understands Representing a single change set of a given material
+     */
     public static class Change {
 
-        String user;
-        String checkinTime;
-        String revision;
-        String message;
+        /**
+         * The user who made this change. This applies mostly to Source Control Repositories where there is a notion of
+         * user who made the change. This will be null for materials of type DependencyMaterial.
+         */
+        public final String user;
+
+        /**
+         * This is the time when the change set was made. This is as reported by the material or the time when the upstream
+         * stage instance was completed, based on the type of the material
+         */
+        public final String checkinTime;
+
+        /**
+         * This is the revision number of the changeset. Based on what material, the format of this may change.
+         *
+         * For example, SVN would have a monotonically increasing integer as the revision. Git & Hg use a hash to denote the same.
+         * Dependency materials use a revision of the format "pipeline_name/pipeline_counter/stage_name/stage_counter".
+         */
+        public final String revision;
+
+        /**
+         * This is the message associated with the given changeset. Based on the material type, this may or may not be null.
+         * For dependency materials, this is null.
+         */
+        public final String message;
 
         public Change(String user, String checkinTime, String revision, String message) {
             this.user = user;
@@ -111,10 +183,6 @@ public class Material {
             result = 31 * result + (revision != null ? revision.hashCode() : 0);
             result = 31 * result + (message != null ? message.hashCode() : 0);
             return result;
-        }
-
-        public String getUser() {
-            return user;
         }
     }
 

@@ -36,10 +36,18 @@ public class FeedEntries {
         return entries;
     }
 
+    /**
+     * The entries from the feed.
+     * @return list of feeds
+     */
     public List<FeedEntry> getEntries() {
         return entries;
     }
 
+    /**
+     * The link to the next page of the feeds. Use this if you want to continue crawling the feeds.
+     * @return the link to the next page of the feeds.
+     */
     public String getNextLink() {
         return nextLink;
     }

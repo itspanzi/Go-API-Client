@@ -3,7 +3,7 @@ package com.thoughtworks.go.visitor.criteria;
 import com.thoughtworks.go.domain.FeedEntry;
 
 /**
- * @understands to matching a feed entry if it is for the given Stage
+ * @understands visiting all the stage instances of a given stage in the feed.
  */
 public class MatchingStageVisitor implements VisitingCriteria {
     private final String stageName;
@@ -17,6 +17,6 @@ public class MatchingStageVisitor implements VisitingCriteria {
     }
 
     public boolean shouldContinueVisiting() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return true;
     }
 }

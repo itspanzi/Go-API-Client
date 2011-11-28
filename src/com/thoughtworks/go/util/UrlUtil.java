@@ -11,6 +11,12 @@ import java.util.StringTokenizer;
  */
 public class UrlUtil {
 
+    /**
+     * Given a url, returns a map name to value of the query parameters.
+     *
+     * @param url the url
+     * @return the map of name to value of query parameters.
+     */
     public static Map<String, String> parametersFrom(String url) {
         try {
             Map<String, String> httpMethodParams = new HashMap<String, String>();
@@ -32,6 +38,12 @@ public class UrlUtil {
         }
     }
 
+    /**
+     * Returns the path given a full URL.
+     *
+     * @param url url
+     * @return the path
+     */
     public static String pathFrom(String url) {
         try {
             return new URI(url).getPath();

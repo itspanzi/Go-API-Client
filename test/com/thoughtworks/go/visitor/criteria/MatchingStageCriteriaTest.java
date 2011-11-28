@@ -20,13 +20,13 @@ public class MatchingStageCriteriaTest {
 
     @Test
     public void shouldReturnTrueIfFeedEntryIsForAGivenStage() throws Exception {
-        assertThat(new MatchingStageVisitor("stage").shouldVisit(new FeedEntry("pipeline/1/stage/1", "", "id", "", new ArrayList<String>(), cardDetails)), is(true));
-        assertThat(new MatchingStageVisitor("stage-1").shouldVisit(new FeedEntry("stage/1/stage-1/1", "", "id", "", new ArrayList<String>(), cardDetails)), is(true));
+        assertThat(new MatchingStageVisitor("stage").shouldVisit(new FeedEntry("pipeline(1) stage stage(1) Failed", "", "id", "", new ArrayList<String>(), cardDetails)), is(true));
+        assertThat(new MatchingStageVisitor("stage-1").shouldVisit(new FeedEntry("stage(1) stage stage-1(1) Passed", "", "id", "", new ArrayList<String>(), cardDetails)), is(true));
     }
 
     @Test
     public void shouldReturnFalseIfFeedEntryIsForNotAGivenStage() throws Exception {
-        assertThat(new MatchingStageVisitor("stage").shouldVisit(new FeedEntry("stage/1/pipeline/1", "", "id", "", new ArrayList<String>(), cardDetails)), is(false));
-        assertThat(new MatchingStageVisitor("stage-2").shouldVisit(new FeedEntry("stage/1/stage-1/1", "", "id", "", new ArrayList<String>(), cardDetails)), is(false));
+        assertThat(new MatchingStageVisitor("stage").shouldVisit(new FeedEntry("stage(1) stage pipeline(1) Passed", "", "id", "", new ArrayList<String>(), cardDetails)), is(false));
+        assertThat(new MatchingStageVisitor("stage-2").shouldVisit(new FeedEntry("stage(1) stage stage-1(1) Cancelled", "", "id", "", new ArrayList<String>(), cardDetails)), is(false));
     }
 }

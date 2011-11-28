@@ -30,7 +30,7 @@ public class MaterialTest {
         assertThat(material.getType(), is("SvnMaterial"));
         assertThat(material.getUrl(), is("tingtong"));
         assertThat(material.getUsername(), is(""));
-        assertThat(material.getCheckExternals(), is("false"));
+        assertThat(material.getCheckExternals(), is(false));
         List<Material.Change> changes = material.getChanges();
         assertThat(changes.size(), is(1));
         assertThat(changes.get(0), is(new Material.Change("vgarg", "2010-06-14T14:07:58+05:30", "48", "Fixed bug #3478.")));
