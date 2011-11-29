@@ -20,13 +20,11 @@ h2. How do I use this?
 
 A sample usage of this client is as follows:
 
-@
-HttpClientWrapper wrapper = new HttpClientWrapper("server.host", 8153, "username", "password");
-TalkToGoLatest talkToGo = new TalkToGoLatest("pipeline", wrapper, false);
-Stage stage = talkToGo.latestStage("stage");
-System.out.println("The latest stage result is: " + stage.getResult());
-System.out.println(String.format("Latest stage info: %s %s %s", stage.getCounter(), stage.getPipelineLabel(), stage.getPipelineCounter()));
-@
+@HttpClientWrapper wrapper = new HttpClientWrapper("server.host", 8153, "username", "password");@
+@TalkToGoLatest talkToGo = new TalkToGoLatest("pipeline", wrapper, false);@
+@Stage stage = talkToGo.latestStage("stage");@
+@System.out.println("The latest stage result is: " + stage.getResult());@
+@System.out.println(String.format("Latest stage info: %s %s %s", stage.getCounter(), stage.getPipelineLabel(), stage.getPipelineCounter()));@
 
 You need to create a @HttpClientWrapper@ which is what is used to interact with the Go server. @TalkToGoLatest@ is created for the pipeline with name "pipeline". Using this instance, you can start interacting with the Go server to get the latest stage, latest pipeline instance etc.
 
