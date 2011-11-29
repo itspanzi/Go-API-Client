@@ -9,15 +9,12 @@ import static org.mockito.Mockito.when;
 
 import java.io.IOException;
 import java.io.File;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.TimeZone;
 
 import static junit.framework.Assert.fail;
-import com.thoughtworks.go.domain.Pipeline;
-import com.thoughtworks.go.domain.Job;
-import com.thoughtworks.go.domain.Stage;
+
 import com.thoughtworks.go.http.HttpClientWrapper;
 
 public class StageTest {
@@ -35,7 +32,7 @@ public class StageTest {
         gregorianCalendar.setTimeZone(TimeZone.getTimeZone("Asia/Calcutta"));
         assertThat(stage.getLastUpdated(), is(gregorianCalendar.getTime()));
         assertThat(stage.getResult(), is("Failed"));
-        assertThat(stage.getState(), is(StageState.Failing));
+        assertThat(stage.getState(), is("Failing"));
         assertThat(stage.getApprovedBy(), is("CruiseTimer"));
         assertThat(stage.getStageLocator(), is("pipeline/9/stage/1"));
     }

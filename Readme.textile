@@ -1,0 +1,35 @@
+h2. Introduction
+
+*Go API Client* is a client library that allows users to interact with a "Thoughtworks Studios Go":http://studios.thoughtworks.com/go server's web API.
+
+The Go server exposes data and actions over HTTP RESTful APIs. This library lets users use Java as the client library.
+
+h2. Why?
+
+This library:
+
+* Shields the user from knowing the format of the XML documents returned as resources
+* Expose POJOs which give access to different domain concepts like pipeline, stage, job, material etc
+* Adds client side caching so that the Go server is not spammed more than required
+* Expose nice helper methods which help build custom reports quite easily
+* Provide version specific APIs
+
+h2. How do I use this?
+
+@TalkToGo@ is the interface that exposes everything that can be done with the Go server. There is a release specific implementation of this interface. For example, if you always want the latest server API, you can use the @TalkToGoLatest@ implementation.
+
+A sample usage of this client is as follows:
+
+@
+HttpClientWrapper wrapper = new HttpClientWrapper("server.host", 8153, "username", "password");
+TalkToGoLatest talkToGo = new TalkToGoLatest("pipeline", wrapper, false);
+Stage stage = talkToGo.latestStage("stage");
+System.out.println("The latest stage result is: " + stage.getResult());
+System.out.println(String.format("Latest stage info: %s %s %s", stage.getCounter(), stage.getPipelineLabel(), stage.getPipelineCounter()));
+@
+
+You need to create a @HttpClientWrapper@ which is what is used to interact with the Go server. @TalkToGoLatest@ is created for the pipeline with name "pipeline". Using this instance, you can start interacting with the Go server to get the latest stage, latest pipeline instance etc.
+
+h2. API Documentation
+
+Since this is an API client, you can checkout the Javadocs on all the Java classes.
